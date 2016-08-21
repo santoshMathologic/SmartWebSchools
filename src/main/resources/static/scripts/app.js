@@ -93,6 +93,24 @@ angular
           }
         }
       })
+      .state('dashboard.users',{
+        url:'/user',
+        controller: 'userCtrl',
+        templateUrl:'views/dashboard/user.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+              'scripts/controllers/User.js',
+             
+              ]
+            })
+          }
+        }
+      })
+      
+   
       .state('dashboard.form',{
         templateUrl:'views/form.html',
         url:'/form'
