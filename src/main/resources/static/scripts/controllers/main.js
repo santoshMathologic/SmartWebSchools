@@ -6,6 +6,6 @@
  * # MainCtrl
  * Controller of the sbAdminApp
  */
-angular.module('sbAdminApp')
+angular.module('smartSchoolApp')
   .controller('MainCtrl', function($scope,$position) {
   });
