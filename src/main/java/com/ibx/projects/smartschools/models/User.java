@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 
 
@@ -21,6 +23,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "user")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
 	/**
@@ -49,6 +52,10 @@ public class User {
 	private String telephoneNo;
 	private String extension;
 	private String employeeNo;
+	private String address;
+	
+	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
+	private Boolean markDelete;
 	
 
 	@NotNull
@@ -59,6 +66,36 @@ public class User {
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
+	
+
+
+	/**
+	 * @param username
+	 * @param password
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param mobileNo
+	 * @param telephoneNo
+	 * @param extension
+	 * @param employeeNo
+	 * @param role
+	 */
+	public User(String username, String password, String firstName, String lastName, String email, String mobileNo,
+			String telephoneNo, String extension, String employeeNo, Role role) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobileNo = mobileNo;
+		this.telephoneNo = telephoneNo;
+		this.extension = extension;
+		this.employeeNo = employeeNo;
+		this.role = role;
+	}
+
 
 
 	public Long getId() {
@@ -165,6 +202,30 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	public Boolean getMarkDelete() {
+		return markDelete;
+	}
+
+
+
+	public void setMarkDelete(Boolean markDelete) {
+		this.markDelete = markDelete;
 	}
 
 }

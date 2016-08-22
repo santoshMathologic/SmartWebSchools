@@ -13,12 +13,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /**
  * Created by santosh on  8-20-2016
  */
 @Entity
 @Table(name = "role")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role implements Serializable {
     /**
 	 * 

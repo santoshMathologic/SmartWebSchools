@@ -13,6 +13,8 @@ angular
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
+    'toaster',
+    'angucomplete-alt',
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     
@@ -102,6 +104,7 @@ angular
             return $ocLazyLoad.load({
               name:'smartSchoolApp',
               files:[
+              'scripts/directives/dashboard/user/user.js',
               'scripts/controllers/User.js',
              
               ]
@@ -109,7 +112,39 @@ angular
           }
         }
       })
-      
+       .state('dashboard.userPlan',{
+        url:'/userPlan',
+        controller: 'userPlanCtrl',
+        templateUrl:'views/dashboard/userPlan.tmpl.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'smartSchoolApp',
+              files:[
+              'scripts/directives/dashboard/userPlan/userPlan.js',
+              'scripts/controllers/UserPlan.js',
+             
+              ]
+            })
+          }
+        }
+      }) .state('dashboard.class',{
+          url:'/class',
+          controller: 'classCtrl',
+          templateUrl:'views/dashboard/class.tmpl.html',
+          resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'smartSchoolApp',
+                files:[
+                'scripts/directives/dashboard/class/class.js',
+                'scripts/controllers/class.js',
+               
+                ]
+              })
+            }
+          }
+        })
    
       .state('dashboard.form',{
         templateUrl:'views/form.html',
