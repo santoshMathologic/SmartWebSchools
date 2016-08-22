@@ -1,9 +1,15 @@
 'use strict';
 
 angular.module('smartSchoolApp')
-    .controller('loginCtrl', function($scope,$position,$http, $base64,$window) {
+    .controller('loginCtrl', function($scope,$position,$http,$state,$base64,$window) {
         $scope.login = function(username, password){
-            $http({
+           
+        	
+        	
+        	
+        	 $state.go('dashboard.userPlan');
+        	
+        	/* $http({
                 method:'GET',
                 url:'/',
                 headers:{
@@ -13,6 +19,6 @@ angular.module('smartSchoolApp')
                 $window.location.href='/';
             }, function errorCallback(response) {
                 alert("User not authorized.");
-            });
+            });*/
         };
     });
