@@ -11,7 +11,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.ibx.projects.smartschools.models.Role;
 
-public class MessageAdapter implements JsonSerializer<Role> {
+public class RoleAdapter implements JsonSerializer<Role> {
 
 	
 	@Override

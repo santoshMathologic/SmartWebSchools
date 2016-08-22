@@ -63,7 +63,7 @@ public class CurrentUserDetails {
 		 List<User> users = userRepository.findAll();
 		// List<User> videos = Gson.fromJson(users, new TypeToken<List<User>>(){}.getType());
 		 GsonBuilder gsonBuilder = new GsonBuilder();
-		    Gson gson = gsonBuilder.registerTypeAdapter(Role.class, new MessageAdapter()).create();
+		    Gson gson = gsonBuilder.registerTypeAdapter(Role.class, new RoleAdapter()).create();
 		    return gson.toJson(users);
 		 
 		 
