@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,20 +29,21 @@ import com.ibx.projects.smartschools.repositories.ClassRepository;
 @RequestMapping("/custom/classes")
 public class ClassController {
 
-	/**
-	 * 
-	 */
+
 	@Autowired
 	ClassRepository classRepository;
-	PageRequest page1 = new PageRequest(0,5, Direction.ASC, "className");
 	
 	public ClassController() {
 		// TODO Auto-generated constructor stub
 	}
-	@RequestMapping(value="/getClass",method = RequestMethod.GET)
-	public @ResponseBody Page<Class_table> getAllClass(){
+@RequestMapping(value="/getClass",method = RequestMethod.GET)
+	public @ResponseBody Page<Class_table> getAllClass(
+			@PathParam("ordeBy") String ordeBy,
+			@PathParam("limit") int limit,
+			@PathParam("page")int page
+			){
 		
-		Page<Class_table>ClassList  = classRepository.findAll(page1);
+		Page<Class_table>ClassList  = classRepository.findAll(new PageRequest(page,limit, Direction.ASC,ordeBy));
 		  return ClassList;
 		
 		

@@ -12,7 +12,7 @@ angular.module('smartSchoolApp')
     	  $scope.roles = [];
     	  $scope.getRole = function(){
     		  $http.get("http://localhost:6060/api/role/getRole").then(function(response){
-    			  $scope.roles  = response.data;
+    			  $scope.roles  = response.data.content;
     			  
     		  }); 
     		  

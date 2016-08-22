@@ -64,12 +64,10 @@ public class CurrentUserDetails {
 	 
 	 @RequestMapping(value="/UserDetails", method= RequestMethod.GET)
 	    public @ResponseBody String UserDetails() {
-		 
 		 List<User> users =  userRepository.findAll();
-		// List<User> videos = Gson.fromJson(users, new TypeToken<List<User>>(){}.getType());
 		 GsonBuilder gsonBuilder = new GsonBuilder();
-		    Gson gson = gsonBuilder.registerTypeAdapter(Role.class, new RoleAdapter()).create();
-		    return gson.toJson(users);
+		 Gson gson = gsonBuilder.registerTypeAdapter(Role.class, new RoleAdapter()).create();
+		 return gson.toJson(users);
 		 
 		 
 		

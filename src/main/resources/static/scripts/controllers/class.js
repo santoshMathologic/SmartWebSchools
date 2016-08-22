@@ -12,7 +12,7 @@ angular.module('smartSchoolApp')
 	  
 	  $scope.classList = [];
 	  $scope.query = {
-              order: 'planName',
+              orderBy: 'className',
               limit: 10,
               page: 1,
               className: '',
@@ -30,12 +30,40 @@ angular.module('smartSchoolApp')
 	  
 	  
 	  $scope.getStudentClass = function(){
-		  $http.get("http://localhost:6060/custom/classes/getClass").then(function(response){
+		  
+		/*  var uri = "/api/custom/drivingSections/updateDrivingSectionIsIgnore?userPlan="
+				+ UserService.getSelectedUserPlan().id
+				+ "&drivingSectionId="+drivingSection[$scope.drivingSections.fields.id]
+				+ "&isIgnore="+ drivingSection[$scope.drivingSections.fields.isIgnore];
+				*/
+		  
+		  var apiUrl = "http://localhost:6060/custom/classes/getClass?ordeBy="
+		  				+ $scope.query.orderBy
+		  				+ "&limit="+ $scope.query.limit
+		  				+ "&page="+$scope.query.page;
+		  $http.get(apiUrl).then(function(response){
 			  $scope.classList  = response.data.content;
 		  })  
 	  }
 	  
 	  $scope.getStudentClass();
+	  
+	  $scope.$watch('query', function(newValue, oldValue) {
+          if (!oldValue) {
+              bookmark = $scope.query.page;
+          }
+
+          if (newValue !== oldValue) {
+              $scope.query.page = newValue.page;
+          }
+
+          if (!newValue) {
+              $scope.query.page = bookmark;
+          }
+
+          $scope.getStudentClass();
+      }, true);
+	  
 	  
 	  $scope.removeClass = function(Studentclass){
 		  console.log(Studentclass);
