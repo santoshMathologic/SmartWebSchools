@@ -4,6 +4,8 @@
 package com.ibx.projects.smartschools.controllers;
 
 
+import java.util.List;
+
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibx.project.smartschools.exception.SmartSchoolException;
+import com.ibx.project.smartschools.service.SmartSchoolService;
 import com.ibx.projects.smartschools.models.Class_table;
 import com.ibx.projects.smartschools.repositories.ClassRepository;
 
@@ -33,6 +37,9 @@ public class ClassController {
 	@Autowired
 	ClassRepository classRepository;
 	
+	
+
+	
 	public ClassController() {
 		// TODO Auto-generated constructor stub
 	}
@@ -43,10 +50,11 @@ public class ClassController {
 			@PathParam("page")int page
 			){
 		
+		
 		Page<Class_table>ClassList  = classRepository.findAll(new PageRequest(page,limit, Direction.ASC,ordeBy));
 		  return ClassList;
 		
-		
+		  
 	}
 	
 	@RequestMapping(value="/createClass",method = RequestMethod.POST)
@@ -80,5 +88,14 @@ public class ClassController {
 		
 		return ClassList;
 	}
+	public ClassRepository getClassRepository() {
+		return classRepository;
+	}
+	
+	public void setClassRepository(ClassRepository classRepository) {
+		this.classRepository = classRepository;
+	}
+	
+	
 
 }
