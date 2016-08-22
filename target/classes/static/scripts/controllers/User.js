@@ -1,11 +1,5 @@
 'use strict';
-/**
- * @ngdoc function
- * @name sbAdminApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the sbAdminApp
- */
+
 angular.module('smartSchoolApp')
   .controller('userCtrl', function($scope,$position,$http) {
 	  
@@ -19,7 +13,12 @@ angular.module('smartSchoolApp')
 		  
 	  }
 	  
-	//  $scope.getUserDetails();
+	 $scope.getUserDetails();
+	 
+	 $scope.removeUser = function(user){
+		 
+		 console.log(""+user);
+	 }
 	  
 	  
 	  

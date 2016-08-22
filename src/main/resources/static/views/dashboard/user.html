@@ -37,42 +37,60 @@
                     <tr>
 
                         <th>S.No.</th>
-                        <th>Station Code</th>
-                        <th>Arrival</th>
+                        <th>UserName</th>
+                        <th>EmployeeNo</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>TelephoneNo</th>
+                        <th>Address</th>
                         
-                        <th>Departure</th>
-                        
-                        <th>Day</th>
-                        <th>Day-of-Journey</th>
-                        <th>Distance(KM)</th>
-                        <th>Duration(In Min)</th>
                     </tr>
                        <tr>
                             <th>&nbsp;</th>
                             <th><input type="text" style="width:120px" class="form-control input-sm" placeholder="code" /></th>
                            
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
+                            <th><input type="text" style="width:120px" class="form-control input-sm" placeholder="code" /></th>
+                            <th><input type="text" style="width:120px" class="form-control input-sm" placeholder="code" /></th>
+                            <th><input type="text" style="width:120px" class="form-control input-sm" placeholder="code" /></th>
+                            <th><input type="text" style="width:120px" class="form-control input-sm" placeholder="code" /></th>
+                            <th><input type="text" style="width:120px" class="form-control input-sm" placeholder="code" /></th>
+                            <th><input type="text" style="width:120px" class="form-control input-sm" placeholder="code" /></th>
                          
                        </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="traintimetable in userLists">
+                    <tr ng-repeat="user in userLists">
 
                         <td>{{$index+1}}</td>
-                        <td>{{traintimetable.stationCode}}</td>
-                        <td>{{traintimetable.arrivalTime}}</td>
-                        
-                        <td>{{traintimetable.departureTime}}</td>
-                        
-                        <td>{{Days[1]|limitTo:3}}</td>
-                        <td>{{traintimetable.dayOfJourney}}</td>
-                        <td>{{traintimetable.distance}}</td>
-                        <td>{{traintimetable.distance}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.employeeNo}}</td>
+                        <td>{{user.password}}</td>
+                        <td>{{user.telephoneNo}}</td>
+                        <td>{{user.role.name}}</td>
+                        <td>{{user.isActive}}</td>
+                        <td>
+
+                                    <a class="btn btn-xs btn-danger fa fa-trash" ng-click="removeUser(user)" title="Edit" ng-show="true" confirm="Are you sure to delete station '{{station.name}}' !!!"
+                                        confirm-settings="{size: 'md'}" confirm-header-class="confirm-header-danger " confirm-footer-class="confirm-footer-default"
+                                        confirm-ok-button-class="btn-danger" confirm-cancel-button-class="btn-default" confirm-title="Confirm Deletion!!"
+                                        confirm-ok="Yes" confirm-cancel="No" title="Remove">
+
+                                    </a>
+
+
+
+
+                                    <button type="button" class="btn btn-xs btn-warning" ng-click="updateUser(user)">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
+
+
+
+                                </td>
                     </tr>
                 </tbody>
                 <tbody ng-show="true">
