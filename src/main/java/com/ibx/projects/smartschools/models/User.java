@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -60,10 +61,13 @@ public class User implements Serializable  {
 	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
 	private Boolean markDelete;
 	
+	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
+	private Boolean isActive;
+	
 
 	@NotNull
-	@ManyToOne
-	@JsonBackReference
+	@ManyToOne(fetch=FetchType.LAZY)
+	
 	private Role role;
 
 	
@@ -230,6 +234,18 @@ public class User implements Serializable  {
 
 	public void setMarkDelete(Boolean markDelete) {
 		this.markDelete = markDelete;
+	}
+
+
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 }

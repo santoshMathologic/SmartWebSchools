@@ -51,7 +51,11 @@
 					<div class="col-md-6">
   					<div class="panel-body">
 					<div ng-repeat="section in setSectionList">
-					{{section}}
+					<ul class="customList">
+					<li>{{section}}</li>
+					
+					</ul>
+					
 					<br>
 						<button type="submit" class="btn btn-danger btn-xs glyphicon glyphicon-minus" ng-click="removeSetSection(section)">
 						

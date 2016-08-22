@@ -8,6 +8,7 @@
 package com.ibx.projects.smartschools.controllers;
 
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
-
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.ibx.projects.smartschools.models.Role;
 import com.ibx.projects.smartschools.models.User;
 import com.ibx.projects.smartschools.repositories.RoleRepository;
 import com.ibx.projects.smartschools.repositories.UserRepository;
@@ -62,7 +68,10 @@ public class CurrentUserDetails {
 		 
 		 List<User> users = userRepository.findAll();
 		// List<User> videos = Gson.fromJson(users, new TypeToken<List<User>>(){}.getType());
-		  return new Gson().toJson(users);
+		 GsonBuilder gsonBuilder = new GsonBuilder();
+		    Gson gson = gsonBuilder.registerTypeAdapter(Role.class, new MessageAdapter()).create();
+		    return gson.toJson(users);
+		 
 		 
 		
 		// return users;
@@ -84,4 +93,5 @@ public class CurrentUserDetails {
 	
 
 }
+
     
