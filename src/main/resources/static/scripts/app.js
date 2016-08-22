@@ -33,7 +33,8 @@ angular
     'angular-loading-bar',
     'toaster',
     'angucomplete-alt',
-    'base64'
+    'base64',
+    'angular-confirm'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     

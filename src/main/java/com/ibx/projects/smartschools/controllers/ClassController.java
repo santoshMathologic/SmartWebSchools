@@ -24,7 +24,7 @@ import com.ibx.projects.smartschools.repositories.ClassRepository;
  *
  */
 @RestController
-@RequestMapping("api/custom/class")
+@RequestMapping("/custom/class")
 public class ClassController {
 
 	/**
