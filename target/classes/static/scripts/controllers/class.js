@@ -11,11 +11,27 @@ angular.module('smartSchoolApp')
 	  
 	  
 	  $scope.classList = [];
+	  $scope.query = {
+              order: 'planName',
+              limit: 10,
+              page: 1,
+              className: '',
+              section_1: '',
+              section_2: '',
+              section_3: '',
+              section_4: '',
+              section_5: '',
+              section_6: '',
+              section_7: '',
+              section_8: "",
+              section_9:"",
+              section_10:""
+          };
 	  
 	  
 	  $scope.getStudentClass = function(){
-		  $http.get("http://localhost:6060/custom/class/getClass").then(function(response){
-			  $scope.classList  = response.data;
+		  $http.get("http://localhost:6060/custom/classes/getClass").then(function(response){
+			  $scope.classList  = response.data.content;
 		  })  
 	  }
 	  

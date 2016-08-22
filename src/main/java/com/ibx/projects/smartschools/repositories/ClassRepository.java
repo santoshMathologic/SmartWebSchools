@@ -25,19 +25,27 @@ public interface ClassRepository extends JpaRepository<Class_table, Long> {
 
 	Page<Class_table> findAll(Pageable pageable);
 	
-	@Query("Select t from User as t where ( t.username LIKE %:username% or :username is '%%' or :username is null ) AND "
-			+ "( t.firstName LIKE %:firstName% or :firstName is '%%' or :firstName is null ) AND "
-			+ "( t.lastName LIKE %:lastName% or :lastName is '%%' or :lastName is null ) AND "
-			+ "( t.email LIKE %:email% or :email is '%%' or :email is null ) AND "
-			+ "( t.role.name LIKE %:role% or :role is '%%' or :role is null ) AND "
-			+ "( t.password LIKE %:password% or :password is '%%' or :password is null ) AND "
-			+ "( t.isActive = :isActive or :isActive = null )")
-	Page<Class_table> findByAllParams(@Param("username") String username,
-			@Param("firstName") String firstName,
-			@Param("lastName") String lastName,
-			@Param("email") String email,
-			@Param("role") String role,
-			@Param("password") String password,
-			@Param("isActive") Boolean isActive, Pageable pageable);
+	@Query("Select t from Class_table as t where ( t.className LIKE %:className% or :className is '%%' or :className is null ) AND "
+			+ "( t.section_1 LIKE %:section_1% or :section_1 is '%%' or :section_1 is null ) AND "
+			+ "( t.section_2 LIKE %:section_2% or :section_2 is '%%' or :section_2 is null ) AND "
+			+ "( t.section_3 LIKE %:section_3% or :section_3 is '%%' or :section_3 is null ) AND "
+			+ "( t.section_4 LIKE %:section_4% or :section_4 is '%%' or :section_4 is null ) AND "
+			+ "( t.section_5 LIKE %:section_5% or :section_5 is '%%' or :section_5 is null ) AND "
+			+ "( t.section_6 LIKE %:section_6% or :section_6 is '%%' or :section_6 is null ) AND "
+			+ "( t.section_7 LIKE %:section_7% or :section_7 is '%%' or :section_7 is null ) AND "
+			+ "( t.section_8 LIKE %:section_8% or :section_8 is '%%' or :section_8 is null ) AND "
+			+ "( t.section_9 LIKE %:section_9% or :section_9 is '%%' or :section_9 is null ) AND "
+			+ "( t.section_10 LIKE %:section_10% or :section_10 is '%%' or :section_10 is null ) ")
+	Page<Class_table> findByAllParams(
+			@Param("section_1") String section_1,
+			@Param("section_2") String section_2,
+			@Param("section_3") String section_3,
+			@Param("section_4") String section_4,
+			@Param("section_5") String section_5,
+			@Param("section_6") String section_6,
+			@Param("section_7") String section_7,
+			@Param("section_8") String section_8,
+			@Param("section_9") String section_9,
+			@Param("section_10") String section_10, Pageable pageable);
 
 }
