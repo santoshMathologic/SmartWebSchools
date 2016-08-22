@@ -35,7 +35,7 @@ public class ClassController {
 	 */
 	@Autowired
 	ClassRepository classRepository;
-	 final PageRequest page1 = new PageRequest(0,2, Direction.ASC, "className");
+	PageRequest page1 = new PageRequest(0,5, Direction.ASC, "className");
 	
 	public ClassController() {
 		// TODO Auto-generated constructor stub
@@ -57,7 +57,7 @@ public class ClassController {
 	}
 	
 	@RequestMapping(value="/findAllClasses", method= RequestMethod.GET)
-	public @ResponseBody Boolean activateUser(
+	public  @ResponseBody Page<Class_table> activateUser(
 			@PathParam("className") String className,
 			@PathParam("section_1") String section_1,
 			@PathParam("section_2") String section_2,
@@ -70,13 +70,15 @@ public class ClassController {
 			@PathParam("section_9") String section_9,
 			@PathParam("section_10") String section_10,
 			@PathParam("limit") int limit,
-			@PathParam("page") int page
-			
-			
-			
-			) {
+			@PathParam("page") int page,
+			@PathParam("orderBy")String orderBy) {
 		System.out.print("" + className);
-		return false;
+		
+		PageRequest pageRequest = new PageRequest(page,limit);
+		
+		Page<Class_table>ClassList =  classRepository.findByAllParams(className, section_1, section_2, section_3, section_4, section_5, section_6, section_7, section_8, section_9, section_10, pageRequest);
+		
+		return ClassList;
 	}
 
 }

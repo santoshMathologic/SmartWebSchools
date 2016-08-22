@@ -26,26 +26,27 @@ public interface ClassRepository extends JpaRepository<Class_table, Long> {
 	Page<Class_table> findAll(Pageable pageable);
 	
 	@Query("Select t from Class_table as t where ( t.className LIKE %:className% or :className is '%%' or :className is null ) AND "
-			+ "( t.section_1 LIKE %:section_1% or :section_1 is '%%' or :section_1 is null ) AND "
-			+ "( t.section_2 LIKE %:section_2% or :section_2 is '%%' or :section_2 is null ) AND "
-			+ "( t.section_3 LIKE %:section_3% or :section_3 is '%%' or :section_3 is null ) AND "
-			+ "( t.section_4 LIKE %:section_4% or :section_4 is '%%' or :section_4 is null ) AND "
-			+ "( t.section_5 LIKE %:section_5% or :section_5 is '%%' or :section_5 is null ) AND "
-			+ "( t.section_6 LIKE %:section_6% or :section_6 is '%%' or :section_6 is null ) AND "
-			+ "( t.section_7 LIKE %:section_7% or :section_7 is '%%' or :section_7 is null ) AND "
-			+ "( t.section_8 LIKE %:section_8% or :section_8 is '%%' or :section_8 is null ) AND "
-			+ "( t.section_9 LIKE %:section_9% or :section_9 is '%%' or :section_9 is null ) AND "
-			+ "( t.section_10 LIKE %:section_10% or :section_10 is '%%' or :section_10 is null ) ")
+			+ "( t.section_1 LIKE %:section1% or :section1 is '%%' or :section1 is null ) AND "
+			+ "( t.section_2 LIKE %:section2% or :section2 is '%%' or :section2 is null ) AND "
+			+ "( t.section_3 LIKE %:section3% or :section3 is '%%' or :section3 is null ) AND "
+			+ "( t.section_4 LIKE %:section4% or :section4 is '%%' or :section4 is null ) AND "
+			+ "( t.section_5 LIKE %:section5% or :section5 is '%%' or :section5 is null ) AND "
+			+ "( t.section_6 LIKE %:section6% or :section6 is '%%' or :section6 is null ) AND "
+			+ "( t.section_7 LIKE %:section7% or :section7 is '%%' or :section7 is null ) AND "
+			+ "( t.section_8 LIKE %:section8% or :section8 is '%%' or :section8 is null ) AND "
+			+ "( t.section_9 LIKE %:section9% or :section9 is '%%' or :section9 is null ) AND "
+			+ "( t.section_10 LIKE %:section10% or :section10 is '%%' or :section10 is null ) ")
 	Page<Class_table> findByAllParams(
-			@Param("section_1") String section_1,
-			@Param("section_2") String section_2,
-			@Param("section_3") String section_3,
-			@Param("section_4") String section_4,
-			@Param("section_5") String section_5,
-			@Param("section_6") String section_6,
-			@Param("section_7") String section_7,
-			@Param("section_8") String section_8,
-			@Param("section_9") String section_9,
-			@Param("section_10") String section_10, Pageable pageable);
+			@Param("className") String className,
+			@Param("section1") String section1,
+			@Param("section2") String section2,
+			@Param("section3") String section3,
+			@Param("section4") String section4,
+			@Param("section5") String section5,
+			@Param("section6") String section6,
+			@Param("section7") String section7,
+			@Param("section8") String section8,
+			@Param("section9") String section9,
+			@Param("section10") String section10, Pageable pageable);
 
 }
