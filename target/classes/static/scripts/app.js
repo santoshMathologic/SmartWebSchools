@@ -7,6 +7,24 @@
  *
  * Main module of the application.
  */
+
+
+var api = {
+	    protocol: 'http',
+	    server: 'localhost',
+	    port: 6060,
+	    baseUrl: '/api/v1',
+	    loginUrl: '/login',
+	    registerUrl: '/register',
+	};
+
+
+	var apiUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl;
+	var apiLoginUrl = api.protocol + '://' + api.server + ':' + api.port + api.loginUrl;
+	var apiRegisterUrl = api.protocol + '://' + api.server + ':' + api.port + api.registerUrl;
+	
+
+
 angular
   .module('smartSchoolApp', [
     'oc.lazyLoad',
@@ -15,6 +33,7 @@ angular
     'angular-loading-bar',
     'toaster',
     'angucomplete-alt',
+    'base64'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     
@@ -153,10 +172,24 @@ angular
       .state('dashboard.blank',{
         templateUrl:'views/pages/blank.html',
         url:'/blank'
+       
     })
       .state('login',{
+    	controller: 'loginCtrl',
         templateUrl:'views/pages/login.html',
-        url:'/login'
+        url:'/login',
+        resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'smartSchoolApp',
+                files:[
+                //'scripts/directives/dashboard/class/class.js',
+                'scripts/controllers/login.js',
+               
+                ]
+              })
+            }
+          }
     })
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',

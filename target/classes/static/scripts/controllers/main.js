@@ -7,5 +7,8 @@
  * Controller of the sbAdminApp
  */
 angular.module('smartSchoolApp')
-  .controller('MainCtrl', function($scope,$position) {
+  .controller('MainCtrl', function($scope,$state,$position) {
+	  if(!$state.current|| ($state.current && $state.current.name != 'login')){
+          $state.go('login');
+      }
   });
