@@ -3,6 +3,8 @@
  */
 package com.ibx.projects.smartschools.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -24,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "user")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User {
+public class User implements Serializable  {
 
 	/**
 	 * 
@@ -59,7 +62,8 @@ public class User {
 	
 
 	@NotNull
-	@ManyToOne	
+	@ManyToOne
+	@JsonBackReference
 	private Role role;
 
 	

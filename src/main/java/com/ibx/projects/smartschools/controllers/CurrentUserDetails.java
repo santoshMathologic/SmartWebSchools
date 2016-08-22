@@ -58,14 +58,14 @@ public class CurrentUserDetails {
 	
 	 
 	 @RequestMapping(value="/UserDetails", method= RequestMethod.GET)
-	    public @ResponseBody String  UserDetails() {
+	    public @ResponseBody String UserDetails() {
 		 
 		 List<User> users = userRepository.findAll();
 		// List<User> videos = Gson.fromJson(users, new TypeToken<List<User>>(){}.getType());
-		 // return new Gson().toJson(users);
+		  return new Gson().toJson(users);
 		 
-		 Gson gson = new Gson();
-		 return gson.toJson(users);
+		
+		// return users;
 	 }
 	 
 	 @RequestMapping(value="/createUser",method  = RequestMethod.POST)
