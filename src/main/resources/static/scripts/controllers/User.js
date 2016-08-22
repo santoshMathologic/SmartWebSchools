@@ -15,6 +15,8 @@ angular.module('smartSchoolApp')
 	  
 	 $scope.getUserDetails();
 	 
+	
+	 
 	 $scope.removeUser = function(user){
 		 
 		 console.log(""+user);

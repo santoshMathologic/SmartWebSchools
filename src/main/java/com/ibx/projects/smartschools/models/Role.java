@@ -37,8 +37,7 @@ public class Role implements Serializable {
     
     
     
-    @OneToMany(mappedBy="role",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-    private List<User> users = new LinkedList<User>();
+    
     
     
     public Long getId() {
@@ -59,11 +58,5 @@ public class Role implements Serializable {
 
 
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+	
 }

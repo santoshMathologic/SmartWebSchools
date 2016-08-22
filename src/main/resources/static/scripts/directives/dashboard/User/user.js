@@ -9,6 +9,15 @@ angular.module('smartSchoolApp')
       },
       controller:function($scope){
     	  $scope.userdetails = {};
+    	  $scope.roles = [];
+    	  $scope.getRole = function(){
+    		  $http.get("http://localhost:6060/api/role/getRole").then(function(response){
+    			  $scope.roles  = response.data;
+    			  
+    		  }); 
+    		  
+    	  }
+    	  $scope.getRole();
     	  
     	  $scope.saveUser = function (userobj) {
 
