@@ -24,7 +24,7 @@ public class RoleController {
 	@Autowired
 	RoleRepository roleRepository;
 	
-	 final PageRequest page1 = new PageRequest(0, 5, Direction.ASC, "name");
+	 final PageRequest page1 = new PageRequest(0,2, Direction.ASC, "name");
 	public RoleRepository getRoleRepository() {
 		return roleRepository;
 	}
