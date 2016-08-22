@@ -11,6 +11,8 @@ package com.ibx.projects.smartschools.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +35,9 @@ public class CurrentUserDetails {
 	 UserRepository userRepository;
 	 @Autowired
 	 RoleRepository roleRepository;
+	 final PageRequest page1 = new PageRequest(
+			  0, 5, Direction.ASC, "employeeNo"
+			);
 	 
 	 @RequestMapping(value="/myDetails", method= RequestMethod.POST)
 	    public String  myDetails() {
@@ -60,7 +65,7 @@ public class CurrentUserDetails {
 	 @RequestMapping(value="/UserDetails", method= RequestMethod.GET)
 	    public @ResponseBody String UserDetails() {
 		 
-		 List<User> users = userRepository.findAll();
+		 List<User> users =  userRepository.findAll();
 		// List<User> videos = Gson.fromJson(users, new TypeToken<List<User>>(){}.getType());
 		 GsonBuilder gsonBuilder = new GsonBuilder();
 		    Gson gson = gsonBuilder.registerTypeAdapter(Role.class, new RoleAdapter()).create();

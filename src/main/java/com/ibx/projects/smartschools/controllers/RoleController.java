@@ -3,6 +3,9 @@ package com.ibx.projects.smartschools.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +23,20 @@ public class RoleController {
 
 	@Autowired
 	RoleRepository roleRepository;
+	
+	 final PageRequest page1 = new PageRequest(0, 5, Direction.ASC, "name");
+	public RoleRepository getRoleRepository() {
+		return roleRepository;
+	}
+
+	public PageRequest getPage1() {
+		return page1;
+	}
+
+	public void setRoleRepository(RoleRepository roleRepository) {
+		this.roleRepository = roleRepository;
+	}
+
 	public RoleController() {
 		
 	}
@@ -39,10 +56,10 @@ public class RoleController {
 		
 	}
 	@RequestMapping(value="/getRole",method  = RequestMethod.GET)
-	public @ResponseBody String getRole(){
-		List<Role> roles= roleRepository.findAll();
+	public @ResponseBody Page<Role> getRole(){
+		Page<Role> roles= roleRepository.findAll(page1);
 		
-		 return new Gson().toJson(roles); 
+		 return roles; 
 		
 	}
 }
