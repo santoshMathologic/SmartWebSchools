@@ -14,8 +14,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.ibx.projects.smartschools.models.Class_subject_table;
-import com.ibx.projects.smartschools.models.Class_table;
-
 import java.lang.Long;
 
 /**

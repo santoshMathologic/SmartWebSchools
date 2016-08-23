@@ -164,7 +164,23 @@ angular
               })
             }
           }
-        })
+        }).state('dashboard.classSubject',{
+            url:'/classSubject',
+            controller: 'classSubjectCtrl',
+            templateUrl:'views/dashboard/classSubject.tmpl.html',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                  name:'smartSchoolApp',
+                  files:[
+                  'scripts/directives/dashboard/classsubject/classsubject.js',
+                  'scripts/controllers/classSubject.js',
+                 
+                  ]
+                })
+              }
+            }
+          })
    
       .state('dashboard.form',{
         templateUrl:'views/form.html',
