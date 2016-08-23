@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibx.project.smartschools.exception.SmartSchoolException;
 import com.ibx.project.smartschools.service.SmartSchoolService;
+import com.ibx.projects.smartschools.models.Class_subject_table;
 import com.ibx.projects.smartschools.models.Class_table;
+import com.ibx.projects.smartschools.repositories.ClassSubjectRepository;
 
 
 @Controller
@@ -24,24 +26,20 @@ import com.ibx.projects.smartschools.models.Class_table;
 public class TestController {
 
 
-	//@Autowired
-	//private SmartSchoolService schoolService;
+	@Autowired
+	private ClassSubjectRepository classSubjectRepository;
 	public TestController() {
 		// TODO Auto-generated constructor stub
 	}
 	@RequestMapping(value="/getClass",method = RequestMethod.GET)
-	public @ResponseBody String getAllClass(
+	public @ResponseBody Page<Class_subject_table> getAllClass(
 			
-			@PathParam("testparam")String testparam
+			@PathParam("id")Long id
 			){
+		final PageRequest page1 = new PageRequest(0,5, Direction.ASC, "subject1");
+		Page<Class_subject_table>classList =  classSubjectRepository.findSubjectById(id,page1);
 		
-		/*try {
-			List<Class_table>classtableList = (List<Class_table>) schoolService.loadList("from Class_table");
-		} catch (SmartSchoolException e) {
-			
-			e.printStackTrace();
-		}*/
-		return testparam;
+		return classList;
 		
 		  
 	}
