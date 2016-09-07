@@ -181,16 +181,31 @@ angular
               }
             }
           })
+          .state('dashboard.station',{
+            url:'/station',
+            controller: 'StationCtrl',
+            templateUrl:'views/dashboard/station.tmpl.html',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                  name:'smartSchoolApp',
+                  files:[
+                  'scripts/controllers/station.js',
+                 
+                  ]
+                })
+              }
+            }
+          })
    
       .state('dashboard.form',{
         templateUrl:'views/form.html',
         url:'/form'
-    })
-      .state('dashboard.blank',{
-        templateUrl:'views/pages/blank.html',
-        url:'/blank'
-       
-    })
+    }).state('dashboard.blank',{
+    	  url:'/blank',
+    	  templateUrl:'views/pages/blank.html'
+         
+     })
       .state('login',{
     	controller: 'loginCtrl',
         templateUrl:'views/pages/login.html',
