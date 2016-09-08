@@ -33,11 +33,12 @@ public class StationVMController {
 			@RequestParam(value = "code", required = false) String code,
 			@RequestParam(value = "name", required = false) String name,
 			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "sortOrder", required = false) String sortOrder,
 			@RequestParam(value = "page", required = false, defaultValue = "0") Long page,
-			@RequestParam(value = "size", required = false, defaultValue = "10") Long size) {
+			@RequestParam(value = "size", required = false, defaultValue = "10") Long size){
 		SelectViewModel result = null;
 		
-		result = stationVMRepository.listStations(code, name,sort, page, size);
+		result = stationVMRepository.listStations(code, name,sort,sortOrder,page, size);
 		return result;
 		
 		

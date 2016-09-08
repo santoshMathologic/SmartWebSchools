@@ -10,7 +10,23 @@ angular.module('smartSchoolApp')
   .controller('StationCtrl', function($scope,$http) {
 
 	  $scope.stationList = [];
-	  $http.get("/api/custom/Stations/list?page=0&size=10&sort=code").then(function(resultObj){
-		  $scope.stationList  = resultObj.data.data[0];  
-	  });
+	  $scope.currentPage = 1;
+	  $scope.itemsPerPage = 10;
+	  $scope.sortBy = "code";
+	  $scope.sortOrder = "DESC";
+	  
+
+				  $scope.getStations = function() {
+
+				$http.get("/api/custom/Stations/list?page=0&size="+$scope.itemsPerPage+"&sort="+$scope.sortBy)
+						.success(function(resultObj) {
+							$scope.stationList = resultObj;
+							/*
+							 * angular.forEach($scope.stationList,function(res){
+							 * $scope.stationList = res; })
+							 */
+						});
+			}
+				  $scope.getStations();
+	  
 });

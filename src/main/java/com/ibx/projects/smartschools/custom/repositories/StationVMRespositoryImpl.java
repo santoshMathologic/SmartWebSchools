@@ -23,7 +23,7 @@ public class StationVMRespositoryImpl implements StationVMRepository {
 
 	@Transactional(readOnly = true)
 	@Override
-	public SelectViewModel listStations(String code, String name,String sort, Long page, Long size) {
+	public SelectViewModel listStations(String code, String name,String sort,String sortOrder, Long page, Long size) {
 		
 		String FROM = " FROM station AS s"
 				+ " WHERE ( :code IS NULL OR s.code = :code ) "
@@ -61,13 +61,16 @@ public class StationVMRespositoryImpl implements StationVMRepository {
 					+ "s.out_station_sign_on_duration as outStationSignOnDuration"
 					+ FROM
 					
-					+ " ORDER BY "+sort
+					+ " ORDER BY "+sort+" "+sortOrder
+				//	+ " ORDER BY :sortBy"+" "+sortOrder
 					+ " LIMIT :start, :offset";
 			Query query2f = entityManager.createNativeQuery(query2);
 			query2f.setParameter("code", code);
 			query2f.setParameter("name", (name!=null)?"%"+ name +"%":null);
 			
 			
+			//query2f.setParameter("sortBy",sort);
+			//query2f.setParameter("sortOrder",sortOrder);
 			query2f.setParameter("start", page*size);
 			query2f.setParameter("offset", size);
 			try {
