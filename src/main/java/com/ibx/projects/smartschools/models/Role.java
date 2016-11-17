@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
+
 /**
  * Created by santosh on  8-20-2016
  */
@@ -34,6 +35,9 @@ public class Role implements Serializable {
 
     @NotNull
     private String name;
+    
+    @OneToMany(mappedBy="role",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    private List<User> users = new LinkedList<User>();
     
     
     

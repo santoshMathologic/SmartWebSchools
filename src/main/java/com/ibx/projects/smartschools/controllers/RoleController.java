@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
 import com.ibx.projects.smartschools.models.Role;
 import com.ibx.projects.smartschools.repositories.RoleRepository;
-import com.ibx.projects.smartschools.repositories.UserRepository;
 
 @RestController
 @RequestMapping("api/role")
