@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "user_plan")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@XmlRootElement
 public class UserPlan implements Serializable {
     /**
 	 * 
@@ -39,12 +41,22 @@ public class UserPlan implements Serializable {
     @NotNull
 	@Column(unique = true)
     private String planName;
-    
-    
 	private String owner;
-    
+	
+	@Column(columnDefinition = "BIT(1) DEFAULT b'0'")
+	private Boolean isComplete;
+	@Column(columnDefinition = "BIT(1) DEFAULT b'0'")
+	private Boolean isUnderReview;
+	@Column(columnDefinition = "BIT(1) DEFAULT b'0'")
+	private Boolean isLocked;
+	
+	
+	
 	@ManyToOne
 	private User user;
+	
+	
+	
 	
 	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
 	private Boolean markDelete;

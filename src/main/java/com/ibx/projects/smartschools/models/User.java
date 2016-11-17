@@ -17,8 +17,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -33,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "user")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@XmlRootElement
 public class User implements Serializable  {
 
 	/**
@@ -71,9 +76,10 @@ public class User implements Serializable  {
 	
 
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	private Role role;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<UserPlan> userPlans = new LinkedList<UserPlan>();
 

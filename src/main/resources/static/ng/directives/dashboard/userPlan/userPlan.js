@@ -11,14 +11,19 @@ angular.module('smartWebApp')
             $scope.userPlans = [];
             $scope.isSave = false;
             
-            $http.get("http://localhost:8080/crewlink_server_0_1/crewlinkservice/admin").then(function(res){
-                   console.log(res);	
-            })
+        
             
+            $scope.params = {
+            	ordeBy:"planName",
+            	limit:10,
+            	perPage:0,
+            	
+            }
             
               $scope.getUserPlan = function(){
-            	$http.get("http://localhost:8080/crewlink_server_0_1/crewlinkservice/admin/plans").then(function(res){
-                	$scope.userPlans = res.data;	
+            	
+            	$http.get("http://localhost:6060/api/custom/userPlan/getUserPlan",{params:$scope.params }).then(function(res){
+                	$scope.userPlans = res.data.content;	
                 })	
             }
             
@@ -31,8 +36,8 @@ angular.module('smartWebApp')
             	
             	 $http({
             	       method: 'POST',
-            	       url: 'http://localhost:8080/crewlink_server_0_1/crewlinkservice/userPlan',
-            	       data: JSON.stringify(userPlan),
+            	       url: 'http://localhost:6060/api/custom/userPlan/createPlan',
+            	       data: userPlan,
             	        headers: {
             	            'Content-Type': 'application/json'
             	   }

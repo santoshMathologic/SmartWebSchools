@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -23,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "role")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@XmlRootElement
 public class Role implements Serializable {
     /**
 	 * 
@@ -35,7 +38,7 @@ public class Role implements Serializable {
 
     @NotNull
     private String name;
-    
+    @JsonIgnore
     @OneToMany(mappedBy="role",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<User> users = new LinkedList<User>();
     
