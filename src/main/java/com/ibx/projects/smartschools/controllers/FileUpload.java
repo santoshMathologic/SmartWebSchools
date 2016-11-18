@@ -33,6 +33,7 @@ import com.ibx.projects.smartschools.models.Day;
 import com.ibx.projects.smartschools.models.Train;
 import com.ibx.projects.smartschools.repositories.StationRepository;
 import com.ibx.projects.smartschools.repositories.TrainRepository;
+import com.ibx.projects.smartschools.repositories.TrainTypeRepository;
 import com.ibx.projects.smartschools.repositories.UserPlanRepository;
 import com.opencsv.CSVReader;
 
@@ -56,6 +57,10 @@ public class FileUpload {
 	
 	 @Autowired
 	 StationRepository stationRepository;
+	 
+	 @Autowired
+	 TrainTypeRepository trainTypeRepository;
+	 
 	public FileUpload() {
 		
 		
@@ -106,20 +111,20 @@ public class FileUpload {
 		            	 
 		            	    trainObject  = new Train();
 		            	
-		            		trainNo = Integer.parseInt(columns[0]);
-		            		trainName = columns[1];
-		            		fromStationCode = columns[2];
-		            		toStationCode = columns[3];
-		            		trainType = columns[11];
+		            		trainNo 			= Integer.parseInt(columns[0]);
+		            		trainName 			= columns[1];
+		            		fromStationCode 	= columns[2];
+		            		toStationCode 		= columns[3];
+		            		trainType 			= columns[11];
 		            		
 		            		trainObject.setTrainNo(trainNo);
 		            		trainObject.setTrainName(trainName);
-		            		trainObject.setSourceStationCode(fromStationCode);
-		            		trainObject.setDestinationstationCode(toStationCode);
-		            		trainObject.setTrainType(trainType);
+		            	
 		            		trainObject.setStartDay(days.MONDAY);
 		            		trainObject.setFromStation(stationRepository.findByCode(fromStationCode));
 		            		trainObject.setToStation(stationRepository.findByCode(toStationCode));
+		            		trainObject.setTrainType(trainTypeRepository.findByName(trainType));
+		            		
 		            		trainLists.add(trainObject);
 		            	    trainRepository.save(trainLists);
 		             }

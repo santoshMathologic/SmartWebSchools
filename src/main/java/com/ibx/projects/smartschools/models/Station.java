@@ -15,8 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Created by santosh
@@ -61,11 +64,13 @@ public class Station implements Serializable {
 	
 	
 
-	@JsonIgnore
+
+	@JsonBackReference
 	@OneToMany(mappedBy = "fromStation", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
 	private List<Train> fromTrains = new LinkedList<Train>();
 
-	@JsonIgnore
+	
+	@JsonBackReference
 	@OneToMany(mappedBy = "toStation", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
 	private List<Train> toTrains = new LinkedList<Train>();
 

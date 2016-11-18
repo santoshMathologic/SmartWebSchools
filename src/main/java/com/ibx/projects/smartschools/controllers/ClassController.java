@@ -4,8 +4,6 @@
 package com.ibx.projects.smartschools.controllers;
 
 
-import java.util.List;
-
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ibx.project.smartschools.exception.SmartSchoolException;
-import com.ibx.project.smartschools.service.SmartSchoolService;
 import com.ibx.projects.smartschools.models.Class_table;
 import com.ibx.projects.smartschools.repositories.ClassRepository;
 
@@ -30,7 +26,7 @@ import com.ibx.projects.smartschools.repositories.ClassRepository;
  *
  */
 @RestController
-@RequestMapping("/custom/classes")
+@RequestMapping("api/v1/classes")
 public class ClassController {
 
 

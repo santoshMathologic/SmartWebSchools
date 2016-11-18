@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +27,7 @@ import com.ibx.projects.smartschools.repositories.TrainRepository;
  *
  */
 @RestController
-@RequestMapping("/api/custom/train")
+@RequestMapping("/api/v1/train")
 public class TrainController {
 
 	/**
@@ -54,14 +55,23 @@ public class TrainController {
 		  
 	}
 	
-	@RequestMapping(value="/getTestList",method = RequestMethod.GET)
-	public @ResponseBody String getTestList(){
+	@RequestMapping(value="/getStationsList",method = RequestMethod.GET)
+	public @ResponseBody String getStationsList(
+			@PathParam("ordeBy") String ordeBy,
+			@PathParam("limit") int limit,
+			@PathParam("perPage")int perPage
+			){
 		
-		List<Station>stationList  = (List<Station>) sessionFactory.openSession().createQuery("from Station").list();
-		System.out.println("The Size of Train Station"+stationList.size());
+
+		
+		Query q = sessionFactory.openSession().createQuery(" FROM Station ");
+		q.setFirstResult(perPage);
+		q.setMaxResults(limit);
+		List<Station>stationList  = q.list();
 		
 		
-		return "";
+		
+		return "The Size of Station"+stationList.size();
 		
 	
 		

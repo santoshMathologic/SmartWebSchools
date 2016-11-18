@@ -17,7 +17,7 @@ import com.ibx.projects.smartschools.repositories.ClassSubjectRepository;
 
 
 @Controller
-@RequestMapping("/custom/test")
+@RequestMapping("api/v1/test")
 public class TestController {
 
 

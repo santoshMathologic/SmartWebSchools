@@ -4,7 +4,7 @@
  var api = {
     protocol: 'http',
     server: 'localhost',
-    port: 4000,
+    port: 6060,
     baseUrl: '/api/v1',
     loginUrl: '/login',
  };

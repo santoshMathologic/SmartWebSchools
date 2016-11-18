@@ -29,7 +29,7 @@ import com.ibx.projects.smartschools.repositories.UserRepository;
 
 
 @RestController
-@RequestMapping("/api/custom/user")
+@RequestMapping("/api/v1/user")
 public class CurrentUserDetails {
 	 @Autowired
 	 UserRepository userRepository;
@@ -64,11 +64,8 @@ public class CurrentUserDetails {
 	 
 	 @RequestMapping(value="/UserDetails", method= RequestMethod.GET)
 	    public @ResponseBody String UserDetails() {
-		 List<User> users =  userRepository.findAll();
-		 GsonBuilder gsonBuilder = new GsonBuilder();
-		 Gson gson = gsonBuilder.registerTypeAdapter(Role.class, new RoleAdapter()).create();
-		 return gson.toJson(users);
-		 
+	
+		  return "details successfully";
 		 
 		
 		// return users;

@@ -26,7 +26,7 @@ import com.ibx.projects.smartschools.repositories.UserRepository;
  */
 
 @RestController
-@RequestMapping("/api/custom/userPlan")
+@RequestMapping("/api/v1/userPlan")
 public class UserPlanController {
 
 	/**

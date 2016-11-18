@@ -12,14 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 /**
- * Created by vivek on 3/10/15.
+ * Created by santosh 
  */
 @Entity
 @Table(name = "train")
@@ -42,17 +42,24 @@ public class Train implements Serializable {
 	private Day startDay;
 
 	private String trainName;
-	private String SourceStationCode;	
-	private String DestinationstationCode;	
-	private String TrainType;
 	
 	
 	
+	
+	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Station fromStation;
 	
+	
+	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Station toStation;
+	
+	
+	@JsonManagedReference	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private TrainType trainType;
+	
 	
 	public Train() {
 		super();
@@ -83,24 +90,7 @@ public class Train implements Serializable {
 	public void setTrainName(String trainName) {
 		this.trainName = trainName;
 	}
-	public String getSourceStationCode() {
-		return SourceStationCode;
-	}
-	public void setSourceStationCode(String sourceStationCode) {
-		SourceStationCode = sourceStationCode;
-	}
-	public String getDestinationstationCode() {
-		return DestinationstationCode;
-	}
-	public void setDestinationstationCode(String destinationstationCode) {
-		DestinationstationCode = destinationstationCode;
-	}
-	public String getTrainType() {
-		return TrainType;
-	}
-	public void setTrainType(String trainType) {
-		TrainType = trainType;
-	}
+	
 
 	public Station getFromStation() {
 		return fromStation;
@@ -116,6 +106,10 @@ public class Train implements Serializable {
 
 	public void setToStation(Station toStation) {
 		this.toStation = toStation;
+	}
+
+	public void setTrainType(TrainType trainType) {
+		this.trainType = trainType;
 	}
 
 

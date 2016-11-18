@@ -22,7 +22,7 @@ import com.ibx.projects.smartschools.repositories.ClassSubjectRepository;
  *
  */
 @RestController
-@RequestMapping("/custom/ClassSubject")
+@RequestMapping("api/v1/ClassSubject")
 public class ClassSubjectsController {
 
 	/**

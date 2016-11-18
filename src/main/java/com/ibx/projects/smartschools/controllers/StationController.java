@@ -25,7 +25,7 @@ import com.ibx.projects.smartschools.repositories.StationRepository;
 
 
 @RestController
-@RequestMapping("/api/custom/station")
+@RequestMapping("/api/v1/station")
 public class StationController {
 	 @Autowired
 	 StationRepository stationRepository;
