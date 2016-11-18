@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -22,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "train")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class Train implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -42,6 +45,9 @@ public class Train implements Serializable {
 	private String SourceStationCode;	
 	private String DestinationstationCode;	
 	private String TrainType;
+	
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Station fromStation;
 	
@@ -50,7 +56,6 @@ public class Train implements Serializable {
 	
 	public Train() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Long getId() {

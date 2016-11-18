@@ -15,15 +15,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Created by vivek on 3/10/15.
+ * Created by santosh
  */
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "station")
+
 public class Station implements Serializable {
 	/**
 	 * 
@@ -60,10 +61,11 @@ public class Station implements Serializable {
 	
 	
 
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "fromStation", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
 	private List<Train> fromTrains = new LinkedList<Train>();
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "toStation", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
 	private List<Train> toTrains = new LinkedList<Train>();
 
