@@ -19,7 +19,7 @@
   
 
 angular.module("smartWebApp",[
-	  'oc.lazyLoad',
+	 'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
@@ -30,6 +30,7 @@ angular.module("smartWebApp",[
     'base64',
     'angularjs-dropdown-multiselect',
     'angucomplete-alt',
+    'ngFileUpload',
 	]).factory('TokenInterceptor', function($q, $window,$location) {
     return {
         request: function(config) {

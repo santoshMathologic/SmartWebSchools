@@ -5,6 +5,8 @@ angular.module('smartWebApp')
             templateUrl: 'ng/directives/dashboard/upload/upload.tmpl.html',
             controller: function($scope, $state, $http, $log, $q, $timeout, $window) {
             	console.log("Inside header Upload");
+            	
+            	
               
                 
             }
