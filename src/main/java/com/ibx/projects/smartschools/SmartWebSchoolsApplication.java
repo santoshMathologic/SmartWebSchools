@@ -1,5 +1,8 @@
 package com.ibx.projects.smartschools;
 
+import javax.persistence.EntityManagerFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +19,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages={"com.ibx.projects.smartschools.repositories"})
 public class SmartWebSchoolsApplication {
 
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SmartWebSchoolsApplication.class, args);
 	}
+	
+	
 }
