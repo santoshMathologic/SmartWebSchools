@@ -28,7 +28,8 @@ angular.module("smartWebApp",[
     'smart-table',
     'ngResource',
     'base64',
-    'angularjs-dropdown-multiselect'
+    'angularjs-dropdown-multiselect',
+    'angucomplete-alt',
 	]).factory('TokenInterceptor', function($q, $window,$location) {
     return {
         request: function(config) {
@@ -128,12 +129,14 @@ angular.module("smartWebApp",[
       }).state('home.dashboard.trains',{
         url:'/train',
         templateUrl:'ng/directives/dashboard/trains/train.directive.html',
+        controller:"trainCtrl",
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name:'smartWebApp',
               files:[
-              'ng/directives/dashboard/trains/train.js'
+              'ng/directives/dashboard/trains/train.js',
+              'ng/controller/train.js'
               ]
             });
           }
