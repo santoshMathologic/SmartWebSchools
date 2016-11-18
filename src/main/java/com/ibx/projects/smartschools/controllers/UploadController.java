@@ -10,9 +10,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
 
@@ -20,17 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import com.ibx.project.smartschools.exception.FileEmptyException;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Console;
-import com.ibx.projects.smartschools.models.Day;
-import com.ibx.projects.smartschools.models.Train;
 import com.ibx.projects.smartschools.models.Upload;
 import com.ibx.projects.smartschools.repositories.UploadRepository;
 import com.opencsv.CSVReader;
@@ -71,9 +65,13 @@ public class UploadController {
 	
 	@RequestMapping(value="/createUpload",method = RequestMethod.POST)
 	
-	public @ResponseBody String createUpload(@RequestParam("Uploadfile") MultipartFile fileDetails,HttpServletRequest request){
+	public @ResponseBody String createUpload(@RequestParam("Uploadfile") MultipartFile fileDetails,HttpServletRequest request)throws FileEmptyException {
 		
 		
+		if (fileDetails == null) {
+	        throw new FileEmptyException ("for uploading, parameter name must be");
+	    }
+
 	   
 		Path currentRelativePath = Paths.get("");
 	   	String s = currentRelativePath.toAbsolutePath().toString();
