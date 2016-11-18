@@ -141,7 +141,22 @@ angular.module("smartWebApp",[
             });
           }
         }
-      })
+      }).state('home.dashboard.upload',{
+          url:'/upload',
+          templateUrl:'ng/directives/dashboard/upload/upload.directive.html',
+          controller:"uploadCtrl",
+          resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+              return $ocLazyLoad.load({
+                name:'smartWebApp',
+                files:[
+                'ng/directives/dashboard/upload/upload.js',
+                'ng/controller/upload.js'
+                ]
+              });
+            }
+          }
+        })
       .state('login',{
         url:'/login',
         templateUrl:'ng/directives/login/login.directive.html',
