@@ -8,13 +8,13 @@
     baseUrl: '/api/v1',
     loginUrl: '/login',
     trainUrl: '/train',
+    uploadUrl: '/Upload',
  };
 
  var apiUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl;
- 
  var apiLoginUrl = api.protocol + '://' + api.server + ':' + api.port + api.loginUrl;
- 
  var apiTrainUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl+api.trainUrl;
+ var apiUploadUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl+api.uploadUrl;
  
   
 

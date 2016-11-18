@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,7 +28,7 @@ public class Upload {
 
 	@Id
     @GeneratedValue
-    private Long class_id;
+    private Long id;
 	
 	private String dataType;
 	private String fileType;
@@ -44,19 +45,17 @@ public class Upload {
 	private boolean markDelete;
 	private String uploadedTime;
 	private String description;
-	private String data;
+	
+	@Lob
+	@Column(length=100000)
+	private byte[] data;
+	
 
 	public Upload() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getClass_id() {
-		return class_id;
-	}
-
-	public void setClass_id(Long class_id) {
-		this.class_id = class_id;
-	}
+	
 
 	public String getDataType() {
 		return dataType;
@@ -65,6 +64,18 @@ public class Upload {
 	public void setDataType(String dataType) {
 		this.dataType = dataType;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 
 	public String getFileType() {
 		return fileType;
@@ -138,12 +149,17 @@ public class Upload {
 		this.description = description;
 	}
 
-	public String getData() {
+
+
+	public byte[] getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+
+
+	public void setData(byte[] data) {
 		this.data = data;
 	}
 
+	
 }

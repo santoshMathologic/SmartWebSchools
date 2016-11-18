@@ -4,6 +4,7 @@ angular.module("smartWebApp").controller("uploadCtrl", function($scope, $state, 
 	console.log("Inside upload Controller");
 	
 	$scope.uploadObject = {};
+	$scope.uploadList = [];
 	 $scope.chooseItems = {
 	          "TrainDetails": "TrainDetails",
 	          "TrainStation": "TrainStation",
@@ -26,13 +27,20 @@ angular.module("smartWebApp").controller("uploadCtrl", function($scope, $state, 
            var fileExtension = fileName.split('.')[fileName.split('.').length - 1].toLowerCase();
 
            Upload.upload({
-             url: "http://localhost:3000/api/v1/upload/createUpload",
-             data: { Uploadfile: file, name: 'file', dataType: $scope.uploadObject.chooseItems, fileType: fileExtension, username: "SANTOSH", description: $scope.uploadObject.description, status: $scope.uploadObject.description }
+             url: apiUploadUrl + "/"+"createUpload",
+             data: { Uploadfile: file, 
+            	 	 name: 'file', 
+            	 	 dataType: $scope.uploadObject.chooseItems, 
+            	 	 fileType: fileExtension, 
+            	 	 username: "SANTOSH", 
+            	 	 description: $scope.uploadObject.description, 
+            	 	 status: $scope.uploadObject.description 
+            	 	}
            }).progress(function (evt) {
-             console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            
              $scope.progressBar = parseInt(100.0 * evt.loaded / evt.total);
            }).success(function (data, status, headers, config) {
-             $scope.$parent.uploadList.push(data);
+             $scope.uploadList.push(data);
              toaster
                .pop({
                  type: 'success',
