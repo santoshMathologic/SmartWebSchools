@@ -12,16 +12,21 @@ angular.module('smartWebApp')
               console.log("DASDAS");
               $scope.trainsList = [];
               $scope.crewLinksListCSVRecords = [];
-
+              var trainurl = apiTrainUrl+ "/getTrainList";
+              $scope.isLoading = true;
+              $scope.string = $state.current.name;
+              $scope.string = $scope.string.replaceParentHeader('.', ' > ');
+              $scope.title = $scope.string;
+              
 
 $scope.serverFetch = new ServerTableFetch(
-        "http://localhost:4000/api/v1/trains", 
+		trainurl,
          $http,
         function(){         
           $scope.isLoading = true;
         },
         function(resultObj){      
-          $scope.trainsList = resultObj.results;
+          $scope.trainsList = resultObj.content;
           $scope.isLoading = false;
         }
     );

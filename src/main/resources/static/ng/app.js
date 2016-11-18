@@ -7,11 +7,15 @@
     port: 6060,
     baseUrl: '/api/v1',
     loginUrl: '/login',
+    trainUrl: '/train',
  };
 
  var apiUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl;
  
  var apiLoginUrl = api.protocol + '://' + api.server + ':' + api.port + api.loginUrl;
+ 
+ var apiTrainUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl+api.trainUrl;
+ 
   
 
 angular.module("smartWebApp",[

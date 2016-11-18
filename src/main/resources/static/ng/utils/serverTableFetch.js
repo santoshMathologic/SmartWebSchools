@@ -82,9 +82,9 @@ var ServerTableFetch = function (url, http, callBackBefore,
 
         }
         var query = {
-            perPage:10,
-            page:1,
-            sortBy:"trainNo"
+        	perPage:1,
+            limit:10,
+            ordeBy:"trainNo"
            
         };
 
