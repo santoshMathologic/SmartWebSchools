@@ -73,9 +73,17 @@ body,html{
 	.main-nav-ul ul{display:none}
 	.main-nav-ul li:hover ul{
 	 display:block;
+	 transition: all linear 0.5s;
 	 
      }
 	.main-nav .sub-arrow:after{content:'\203A';float:right;margin-right:20px;transform:rotate(90deg);-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg)}
 	.main-nav li:hover .sub-arrow:after{content:'\2039'}
 	.main-nav-ul ul a:before{content:'\203A';margin-right:20px}
      .fixedfooter{position:fixed;left:200px;width:100%}
+     
+     
+     .ng-hide {
+		 transition: all linear 0.5s;
+  		 background-color: lightblue;
+ 		 
+    }

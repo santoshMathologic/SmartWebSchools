@@ -31,6 +31,7 @@ angular.module("smartWebApp",[
     'angularjs-dropdown-multiselect',
     'angucomplete-alt',
     'ngFileUpload',
+    'ngAnimate'
 	]).factory('TokenInterceptor', function($q, $window,$location) {
     return {
         request: function(config) {
