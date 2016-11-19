@@ -13,12 +13,7 @@ angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$stat
 						"BharatamChitFund" : "Bharatam Chit Fund",
 					};
 
-					$scope.myFunc = function(){
-						console.log("changes ");
-						 if($scope.bChoose){
-							 $scope.bChoose = false;
-						 }
-					}
+					
        
        $scope.dologin = function(username, password,searchModel){
            
