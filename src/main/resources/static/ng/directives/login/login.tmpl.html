@@ -12,12 +12,20 @@
                                 <input class="form-control" placeholder="User" name="user" type="text" autofocus ng-model="username">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password"  ng-model="password">
+                                <input class="form-control" placeholder="Password" name="password" ng-change="myFunc()" type="password"  ng-model="password">
+                                <label> Show/Hide Password
+                                <input name="password" type="checkbox"  ng-model="bshowPasskey">
+                                </label>
+                                <div ng-show="bshowPasskey">
+                                   Your password is : {{ password }}
+                                </div>
+                                
+                                
                             </div>
                             
                           
             
-                            <div> Type: <select ng-model="searchModel.item" class="form-control input-sm">
+                            <div ng-show="bChoose"> Type: <select ng-model="searchModel.item" class="form-control input-sm">
                                    <option value="">-- Choose Options --</option>
                                         <option value="{{key}}" ng-repeat="(key,val) in searchItems">{{val}}</option>
                                 </select>

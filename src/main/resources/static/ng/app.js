@@ -170,6 +170,7 @@ angular.module("smartWebApp",[
               files:[
               'ng/controller/login.js',
               'ng/directives/login/login.js',
+              'ng/directives/login/customSelectBox.js',
                'ng/factory/auth.js'
               ]
             });

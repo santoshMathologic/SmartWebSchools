@@ -2,15 +2,23 @@
 ' use strict';
 angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$state, $base64,$window,AuthFactory,UserAuthFactory){
 
-
+					$scope.bChoose = true;
+					$scope.bshowPasskey = false;
+					
 					$scope.searchItems = {
-								  "CrewLink" : "Crew Link",
-								  "SmartWebSchool" : "Smart Web School",
-								  "TradeMarketLive" : "Trade Market Live",
-								  "ShopforYou" : "Shop for You",
-								  "BharatamChitFund" : "Bharatam Chit Fund",			  
-								};
+						"CrewLink" : "Crew Link",
+						"SmartWebSchool" : "Smart Web School",
+						"TradeMarketLive" : "Trade Market Live",
+						"ShopforYou" : "Shop for You",
+						"BharatamChitFund" : "Bharatam Chit Fund",
+					};
 
+					$scope.myFunc = function(){
+						console.log("changes ");
+						 if($scope.bChoose){
+							 $scope.bChoose = false;
+						 }
+					}
        
        $scope.dologin = function(username, password,searchModel){
            
