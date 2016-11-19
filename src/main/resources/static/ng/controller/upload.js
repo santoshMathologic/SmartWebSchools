@@ -4,6 +4,7 @@ angular.module("smartWebApp").controller("uploadCtrl", function($scope, $state, 
 	console.log("Inside upload Controller");
 	
 	$scope.uploadObject = {};
+	
 	$scope.uploadList = [];
 	 $scope.chooseItems = {
 	          "TrainDetails": "TrainDetails",
@@ -25,6 +26,8 @@ angular.module("smartWebApp").controller("uploadCtrl", function($scope, $state, 
        $scope.processUpload = function (file) {
            var fileName = file.name;
            var fileExtension = fileName.split('.')[fileName.split('.').length - 1].toLowerCase();
+           
+           console.log("train stat"+$scope.uploadObject.traindetails);
 
            Upload.upload({
              url: apiUploadUrl + "/"+"createUpload",

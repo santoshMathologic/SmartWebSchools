@@ -29,13 +29,9 @@ import com.ibx.project.smartschools.exception.SmartSchoolException;
 @Component
 public class SmartSchoolDaoImpl implements SmartSchoolDao {
 
-	@PersistenceContext
-	private EntityManager entityManager;
 	@Autowired
-	SessionFactory sessionFactory;
-	Session session = null;
+	private SessionFactory sessionFactory;
 	public SmartSchoolDaoImpl() {
-		 session = sessionFactory.getCurrentSession();
 	}
 
 	@Override
@@ -43,20 +39,37 @@ public class SmartSchoolDaoImpl implements SmartSchoolDao {
 	public Collection<?> loadList(String stringQuery) throws SmartSchoolException {
 	
 		Query query;
-		query =session.createQuery(stringQuery);
+		query =sessionFactory.openSession().createQuery(stringQuery);
 		query.setCacheable(true);		
 		return query.list();
 	
 	}
 
-	public Session getSession() {
-		return session;
-	}
-
 	
 
-	public void setSession(Session session) {
-		this.session = session;
+	@Override
+	public void saveInDb(Object object) throws SmartSchoolException {
+		
+	}
+
+	@Override
+	public void deleteFromDb(String query) throws SmartSchoolException {
+		
+	}
+
+	@Override
+	public void updateInDb(Object object) throws SmartSchoolException {
+		
+	}
+
+	@Override
+	public Object loadUniqueObject(String query) throws SmartSchoolException {
+		return null;
+	}
+
+	@Override
+	public Object DeleteUniqueObject(String query) throws SmartSchoolException {
+		return null;
 	}
 
 	

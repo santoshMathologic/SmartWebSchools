@@ -74,7 +74,8 @@ public class Station implements Serializable {
 	@OneToMany(mappedBy = "toStation", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
 	private List<Train> toTrains = new LinkedList<Train>();
 
-	
+	@OneToMany(mappedBy = "station", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+	private List<TrainStation> trainStations = new LinkedList<TrainStation>();
 
 	public Long getId() {
 		return id;

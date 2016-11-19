@@ -3,6 +3,10 @@ package com.ibx.projects.smartschools.models;
 
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -59,6 +64,9 @@ public class Train implements Serializable {
 	@JsonManagedReference	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private TrainType trainType;
+	
+	@OneToMany(mappedBy="train", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+	private List<TrainStation> trainStations = new LinkedList<TrainStation>();
 	
 	
 	public Train() {
