@@ -3,7 +3,7 @@ angular.module('smartWebApp')
         return {
             restrict: 'E',
             templateUrl: 'ng/directives/dashboard/userPlan/userPlan.tmpl.html',
-            controller: function($scope, $state, $http, $log, $q, $timeout, $window,toaster) {
+            controller: function($scope, $state, $http, $log, $q, $timeout, $window,toaster,$location) {
 
             $scope.string = $state.current.name;
             $scope.string = $scope.string.replaceParentHeader('.', ' > ');
@@ -34,7 +34,7 @@ angular.module('smartWebApp')
             	
             	$http({
             		  method: 'POST',
-           	       url: 'http://localhost:6060/api/custom/userPlan/createPlan',
+           	       url: apiUserPlanUrl+"/"+"createPlan",
            	       data: userPlan,
            	        headers: {
            	            'Content-Type': 'application/json'
@@ -53,12 +53,29 @@ angular.module('smartWebApp')
                 		  toaster.pop({type: 'error', title: 'Error', body: 'Unable To Crew Type. Please Try Again!!!'});
                 		 
             		  });
-            	
-            	 
-            	 
-            	 
-  	
-            }
+            
+                  }
+            
+            $scope.selectUserPlan = function(userPlan) {
+				//UserService.setSelectedUserPlan(userPlan);
+				$location.path('/dashboard/home');
+			};
+            
+            $scope.deleteUserPlan = function(userplan) {
+            	$scope.userPlans.splice(
+						$scope.userPlans
+								.indexOf(userplan),
+						1);
+				toaster
+						.pop({
+							type : 'success',
+							title : 'User Plan Removed',
+							body : 'User Plan Removed Successfully!!!'
+						});
+
+			}
+            
+            
             }
 
         };

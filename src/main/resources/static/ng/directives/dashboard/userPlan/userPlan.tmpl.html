@@ -1,7 +1,9 @@
 <div>
 
-<div class="page-header customheader">
- <h1> {{title}} </h1>
+<br/>
+<br/>
+<div class="page-header">
+ <h3> {{title}} </h3>
 </div>
 
 
@@ -43,7 +45,8 @@
 								<th>{{userplan.planName}}</th>
 								<th>{{userplan.user.username}}</th>
 								<th>
-									<button class="btn btn-xs btn-success" ng-click="selectUserPlan(userplan)">Select</button>
+									<button class="btn btn-xs btn-success" ng-click="selectUserPlan(userplan)">
+									 <span class="fa fa-bed fa-1x"></span>Select</button>
 									<button class="btn btn-xs btn-warning" ng-click="updateUserPlan(userplan)" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></button>
 									<button
 									class="btn btn-xs btn-danger fa fa-remove"
@@ -84,8 +87,12 @@
 											required.</span>
 								</div>
 								<div class="form-group">
-									<input ng-show="isSave" type="submit" class="btn btn-primary btn-sm"
-										ng-click="submitted=true;save(userPlan,'create')" value="Create Plan" />
+									<button ng-show="isSave" type="submit" class="btn btn-primary btn-sm"
+										ng-click="submitted=true;save(userPlan,'create')">
+										Create Plan <span class="fa fa-floppy-o (save)"></span>
+										</button> 
+										
+										
 									<input ng-show="!isSave" type="submit" class="btn btn-primary btn-sm"
 										ng-click="submitted=true;save(userPlan,'update')" value="Update Plan" />
 									
