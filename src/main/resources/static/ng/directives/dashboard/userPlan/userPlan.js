@@ -31,28 +31,41 @@ angular.module('smartWebApp')
             
             $scope.save = function(userPlan,createType){
             	
-            	
-            	$http({
-            		  method: 'POST',
-           	       url: apiUserPlanUrl+"/"+"createPlan",
-           	       data: userPlan,
-           	        headers: {
-           	            'Content-Type': 'application/json'
-           	           }
-            		}).then(function successCallback(response) {
-            			 
-               		  if (response.status == 200) {
-                             $scope.userPlans.push(userPlan);
-                             toaster.pop({type: 'success', title: 'created Successfully', body: 'Unable To Crew Type. Please Try Again!!!'});
-   							
-                           
+            	if ($scope.userPlans.length > 9) { 
+            		 // A User can be created Max 10  UserPlan
+            			toaster.pop({
+            					type : 'error',
+            					title : 'Error',
+            					body : 'You can add more than 10 User Plans . Please delete existing user plan to add new one'
+            				});
+            			} else {
+            				
+            				$http({
+                      		  method: 'POST',
+                     	       url: apiUserPlanUrl+"/"+"createPlan",
+                     	       data: userPlan,
+                     	        headers: {
+                     	            'Content-Type': 'application/json'
+                     	           }
+                      		}).then(function successCallback(response) {
+                      			 
+                         		  if (response.status == 200) {
+                                       $scope.userPlans.push(userPlan);
+                                       toaster.pop({type: 'success', title: 'created Successfully', body: 'Unable To Crew Type. Please Try Again!!!'});
+             							
+                                     
 
-                         }
-            		  }, function errorCallback(response) {
-            			  console.log("Inside Error Page");
-                		  toaster.pop({type: 'error', title: 'Error', body: 'Unable To Crew Type. Please Try Again!!!'});
-                		 
-            		  });
+                                   }
+                      		  }, function errorCallback(response) {
+                      			  console.log("Inside Error Page");
+                          		  toaster.pop({type: 'error', title: 'Error', body: 'Unable To Crew Type. Please Try Again!!!'});
+                          		 
+                      		  });
+
+            				}
+            	
+            	
+            
             
                   }
             
