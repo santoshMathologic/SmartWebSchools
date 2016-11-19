@@ -9,12 +9,14 @@
     loginUrl: '/login',
     trainUrl: '/train',
     uploadUrl: '/Upload',
+    userPlanUrl :"/userPlan"
  };
 
  var apiUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl;
  var apiLoginUrl = api.protocol + '://' + api.server + ':' + api.port + api.loginUrl;
  var apiTrainUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl+api.trainUrl;
  var apiUploadUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl+api.uploadUrl;
+ var apiUserPlanUrl = api.protocol + '://' + api.server + ':' + api.port + api.baseUrl+api.userPlanUrl;
  
   
 

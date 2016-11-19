@@ -22,7 +22,7 @@ angular.module('smartWebApp')
             
               $scope.getUserPlan = function(){
             	
-            	$http.get("http://localhost:6060/api/custom/userPlan/getUserPlan",{params:$scope.params }).then(function(res){
+            	$http.get(apiUserPlanUrl+"/"+"getUserPlan",{params:$scope.params }).then(function(res){
                 	$scope.userPlans = res.data.content;	
                 })	
             }
