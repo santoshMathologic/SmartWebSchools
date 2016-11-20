@@ -55,13 +55,12 @@ angular.module("smartWebApp",[
         }
       };
     })
-.config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function($stateProvider,$urlRouterProvider,$ocLazyLoadProvider){
+.config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','$httpProvider',function($stateProvider,$urlRouterProvider,$ocLazyLoadProvider,$httpProvider){
 
-	 // $httpProvider.defaults.useXDomain = true;
-	 // delete $httpProvider.defaults.headers.common['X-Requested-With'];
-	 // $httpProvider.defaults.headers.common["Accept"] = "application/json";
-	 // $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
-	    
+	// The following lines are added for CORS (Cross Origin Request Sharing)
+	$httpProvider.defaults.useXDomain = true;
+	delete $httpProvider.defaults.headers.common['X-Requested-With'];
+	
     $ocLazyLoadProvider.config({
       debug:false,
       events:true,
