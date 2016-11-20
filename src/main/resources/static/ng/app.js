@@ -35,6 +35,7 @@ angular.module("smartWebApp",[
     'ngFileUpload',
     'ngAnimate',
     'ngBootbox',
+    'ngRoute',
 	]).factory('TokenInterceptor', function($q, $window,$location) {
     return {
         request: function(config) {
