@@ -1,16 +1,18 @@
+
 angular.module('smartWebApp')
     .directive('userPlan', ['$compile', function($compile) {
         return {
             restrict: 'E',
             templateUrl: 'ng/directives/dashboard/userPlan/userPlan.tmpl.html',
-            controller: function($scope, $state, $http, $log, $q, $timeout, $window,toaster,$location) {
+            controller: function($scope, $state, $http, $log, $q, $timeout, $window,toaster,$location,customAlgorithmSvc) {
 
             $scope.string = $state.current.name;
             $scope.string = $scope.string.replaceParentHeader('.', ' > ');
             $scope.title = $scope.string;
             $scope.userPlans = [];
-            $scope.isSave = true	;
-            
+            $scope.isSave = true;
+
+           
         
             
             $scope.params = {
@@ -21,6 +23,7 @@ angular.module('smartWebApp')
             }
             
               $scope.getUserPlan = function(){
+            	console.log(""+customAlgorithmSvc.encodingFun());
             	
             	$http.get(apiUserPlanUrl+"/"+"getUserPlan",{params:$scope.params }).then(function(res){
                 	$scope.userPlans = res.data.content;	

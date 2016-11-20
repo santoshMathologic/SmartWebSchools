@@ -4,7 +4,7 @@
  var api = {
     protocol: 'http',
     server: 'localhost',
-    port: 6060,
+    port: 8080,
     baseUrl: '/api/v1',
     loginUrl: '/login',
     trainUrl: '/train',
@@ -34,7 +34,6 @@ angular.module("smartWebApp",[
     'angucomplete-alt',
     'ngFileUpload',
     'ngAnimate',
-    'angular-confirm',
     'ngBootbox',
 	]).factory('TokenInterceptor', function($q, $window,$location) {
     return {
@@ -98,7 +97,8 @@ angular.module("smartWebApp",[
               'ng/directives/dashboard/footer/footer.js',
               'ng/utils/customConverter.js',
               'ng/utils/serverTableFetch.js',
-              'ng/factory/auth.js'
+              'ng/factory/auth.js',
+              
                 
                 
               ]
@@ -114,7 +114,9 @@ angular.module("smartWebApp",[
             return $ocLazyLoad.load({
               name:'smartWebApp',
               files:[
-              'ng/directives/dashboard/userPlan/userPlan.js'
+              'ng/directives/dashboard/userPlan/userPlan.js',
+              'ng/services/encodingAlgoService.js'
+              
               ]
             });
           }
@@ -202,5 +204,10 @@ angular.module("smartWebApp",[
 	
              console.log("in app");
 
+	}]).run(['$rootScope', '$location', function ($rootScope, $location) {
+	    $rootScope.$on('$routeChangeStart', function (event) {
+
+	      console.log("run");
+	    });
 	}]);
 

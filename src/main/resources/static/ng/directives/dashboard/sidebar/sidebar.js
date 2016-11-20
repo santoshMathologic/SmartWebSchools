@@ -19,13 +19,13 @@ angular.module('smartWebApp')
             	        buttons: {
             	            warning: {
             	                label: "Cancel",
-            	                className: "btn-warning",
-            	                callback: function() { ... }
+            	                className: "btn btn-warning btn-xs",
+            	                callback: function() { }
             	            },
             	            success: {
             	                label: "Ok",
-            	                className: "btn-success",
-            	                callback: function() { ... }
+            	                className: "btn btn-success btn-xs",
+            	                callback: function() {  }
             	            }
             	        }
             	    };
@@ -33,17 +33,20 @@ angular.module('smartWebApp')
             	  $scope.customDialogButtons = {
             		        warning: {
             		            label: "Warning!",
-            		            className: "btn-success",
+            		            className: "btn btn-success btn-xs",
             		            callback: function() { $scope.addAction('Warning', false); }
             		        },
             		        success: {
             		            label: "Success!",
-            		            className: "btn-success",
-            		            callback: function() { $scope.addAction('Success!', true) }
+            		            className: "btn btn-success btn-xs",
+            		            callback: function() { 
+            		            	$scope.addAction('Success!', true) 
+            		            	
+            		            }
             		        },
             		        danger: {
             		            label: "Danger!",
-            		            className: "btn-danger",
+            		            className: "btn btn-danger btn-xs",
             		            callback: function() { $scope.addAction('Danger!', false) }
             		        },
             		        main: {
