@@ -56,7 +56,7 @@ angular.module("smartWebApp",[
         }
       };
     })
-.config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','$httpProvider',function($stateProvider,$urlRouterProvider,$ocLazyLoadProvider,$httpProvider){
+.config(['$routeProvider','$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','$httpProvider',function($routeProvider,$stateProvider,$urlRouterProvider,$ocLazyLoadProvider,$httpProvider){
 
 	// The following lines are added for CORS (Cross Origin Request Sharing)
 	$httpProvider.defaults.useXDomain = true;
@@ -66,7 +66,33 @@ angular.module("smartWebApp",[
       debug:false,
       events:true,
     });
-     $urlRouterProvider.otherwise('/home/dashboard');
+    
+    
+    $routeProvider
+	.when('/', {
+		   templateUrl:'ng/directives/login/login.directive.html',
+	       controller:"loginCtrl",
+		resolve: {
+	          loadMyFiles:function($ocLazyLoad) {
+	            return $ocLazyLoad.load({
+	              name:'smartWebApp',
+	              files:[
+	                     'ng/controller/login.js',
+	                     'ng/directives/login/login.js',
+	                     'ng/directives/login/customSelectBox.js',
+	                     'ng/factory/auth.js'
+	                   
+	              ]
+	            });
+	          }
+	        }
+		
+	}).otherwise({
+		redirectTo: '/'
+	});
+    
+    // $urlRouterProvider.otherwise('/home/dashboard');
+    $urlRouterProvider.otherwise('/login');
      $stateProvider
      .state('home',{
         url:'/home',
@@ -164,26 +190,24 @@ angular.module("smartWebApp",[
               });
             }
           }
-        })
-      .state('login',{
-        url:'/login',
-        templateUrl:'ng/directives/login/login.directive.html',
-        controller:"loginCtrl",
-        resolve: {
-          loadMyFiles:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'smartWebApp',
-              files:[
-              'ng/controller/login.js',
-              'ng/directives/login/login.js',
-              'ng/directives/login/customSelectBox.js',
-               'ng/factory/auth.js'
-              ]
-            });
-          }
-        }
-      })
-      .state('register',{
+        }).state('login',{
+            url:'/login',
+            templateUrl:'ng/directives/login/login.directive.html',
+            controller:"loginCtrl",
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                  name:'smartWebApp',
+                  files:[
+                  'ng/controller/login.js',
+                  'ng/directives/login/login.js',
+                  'ng/directives/login/customSelectBox.js',
+                   'ng/factory/auth.js'
+                  ]
+                });
+              }
+            }
+          }).state('register',{
         url:'/register',
         templateUrl:'ng/directives/register/register.directive.html',
         controller:"registerCtrl",
