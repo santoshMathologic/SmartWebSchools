@@ -24,9 +24,9 @@ angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$stat
 		UserAuthFactory.loginFactory(username,password).success(function(response){
 	        console.log(""+response);
 
-	                        //AuthenticationFactory.isLogged = true;
-                            //AuthenticationFactory.user = res.user.username;
-                            //AuthenticationFactory.userRole = res.user.role;
+	        				AuthFactory.isLogged = true;
+	        				AuthFactory.user = response.username;
+	        				AuthFactory.userRole = response.roleCode;
 
                             $window.sessionStorage.token = response.token;
                             $window.sessionStorage.user = response.username; // to fetch the user details on refresh
