@@ -95,7 +95,7 @@ public class AuthController {
 
 		
 	 
-		return "Token"+generatedToken;
+		return generatedToken;
 	}
 	
 	

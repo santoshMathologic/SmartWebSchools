@@ -11,7 +11,7 @@ var app = angular.module("smartWebApp").factory(
 				},
 				check : function() {
 					if ($window.sessionStorage.token
-							&& $window.sessionStorage.user) {
+							&& $window.sessionStorage.userName) {
 						this.isLogged = true;
 					} else {
 						this.isLogged = false;

@@ -1,23 +1,21 @@
 package com.ibx.projects.smartschools.models;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.ibx.project.smartschools.Utils.LocalDateConverter;
+
 
 
 
@@ -61,8 +59,10 @@ public class UserPlan implements Serializable {
 	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
 	private Boolean markDelete;
 	
-	//@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	//private LocalDateTime createdTime = LocalDateTime.now();
+	/*@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeSerializer.class)
+	private LocalDateTime createdTime = LocalDateTime.now();*/
 	
 	
 	private String co_planner;
@@ -71,18 +71,31 @@ public class UserPlan implements Serializable {
 	
 	private String reviewer;
 	
+	@Convert(converter = LocalDateConverter.class)
+	@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDate timestamp;
+	
 	
 	public UserPlan(){
 		
 	}
     
     
-	public UserPlan(Long id, String planName, String owner, User user, Boolean markDelete, LocalDateTime createdTime,
-			String co_planner, Boolean isUnderReviewer, String reviewer) {
+	
+    
+   
+    
+    
+    public UserPlan(Long id, String planName, String owner, Boolean isComplete, Boolean isUnderReview, Boolean isLocked,
+			User user, Boolean markDelete, LocalDateTime createdTime, String co_planner, Boolean isUnderReviewer,
+			String reviewer) {
 		super();
 		this.id = id;
 		this.planName = planName;
 		this.owner = owner;
+		this.isComplete = isComplete;
+		this.isUnderReview = isUnderReview;
+		this.isLocked = isLocked;
 		this.user = user;
 		this.markDelete = markDelete;
 		//this.createdTime = createdTime;
@@ -91,11 +104,13 @@ public class UserPlan implements Serializable {
 		this.reviewer = reviewer;
 	}
 
-    
-   
-    
-    
-    public Long getId() {
+
+
+
+
+
+
+	public Long getId() {
         return id;
     }
 
@@ -135,15 +150,6 @@ public class UserPlan implements Serializable {
 		this.markDelete = markDelete;
 	}
 
-	/*
-	public LocalDateTime getCreatedTime() {
-		return createdTime;
-	}
-
-	public void setCreatedTime(LocalDateTime createdTime) {
-		this.createdTime = createdTime;
-	}
-	*/
 	
 
 	public String getCo_planner() {
@@ -169,6 +175,45 @@ public class UserPlan implements Serializable {
 	public void setReviewer(String reviewer) {
 		this.reviewer = reviewer;
 	}
+
+
+	public Boolean getIsComplete() {
+		return isComplete;
+	}
+
+
+	public void setIsComplete(Boolean isComplete) {
+		this.isComplete = isComplete;
+	}
+
+
+	public Boolean getIsUnderReview() {
+		return isUnderReview;
+	}
+
+
+	public void setIsUnderReview(Boolean isUnderReview) {
+		this.isUnderReview = isUnderReview;
+	}
+
+
+	public Boolean getIsLocked() {
+		return isLocked;
+	}
+
+
+	public void setIsLocked(Boolean isLocked) {
+		this.isLocked = isLocked;
+	}
+
+	/*public LocalDateTime getCreatedTime() {
+		return createdTime;
+	}
+
+
+	public void setCreatedTime(LocalDateTime createdTime) {
+		this.createdTime = createdTime;
+	}*/
 
   
 }

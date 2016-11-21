@@ -36,6 +36,7 @@ angular.module("smartWebApp",[
     'ngAnimate',
     'ngBootbox',
     'ngRoute',
+    'angular-jwt'
 	]).factory('TokenInterceptor', function($q, $window,$location) {
     return {
         request: function(config) {

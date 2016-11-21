@@ -1,6 +1,7 @@
 /*jshint sub:true*/
 ' use strict';
-angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$state, $base64,$window,AuthFactory,UserAuthFactory){
+//
+angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$state, $base64,$window,AuthFactory,UserAuthFactory,jwtHelper){
 
 					$scope.bChoose = true;
 					$scope.bshowPasskey = false;
@@ -22,17 +23,30 @@ angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$stat
            }
 
 		UserAuthFactory.loginFactory(username,password).success(function(response){
-	        console.log(""+response);
-
+	        
+	        				var userTokenObj = JSON.parse(JSON.stringify(response));
+	        				
+	        				//var tokenPayload = jwtHelper.decodeToken(userTokenObj.token);
+	        			
+	        				
 	        				AuthFactory.isLogged = true;
-	        				AuthFactory.user = response.username;
-	        				AuthFactory.userRole = response.roleCode;
-
-                            $window.sessionStorage.token = response.token;
-                            $window.sessionStorage.user = response.username; // to fetch the user details on refresh
-                            $window.sessionStorage.userRole = response.roleCode; // to fetch the user details on refresh
-
-                            $state.go('home.dashboard.userPlan');
+	        				AuthFactory.userName = userTokenObj .userName;
+	        				AuthFactory.userRole = userTokenObj.roleCode;
+	        				AuthFactory.currentPlan = userTokenObj.currentPlan;
+	        				
+	        				$window.sessionStorage.setItem("token",userTokenObj.token);
+	        				$window.sessionStorage.setItem("userName",userTokenObj.userName);
+	        				$window.sessionStorage.setItem("userRole",userTokenObj.roleCode);
+	        				$window.sessionStorage.setItem("currentPlan",userTokenObj.currentPlan);
+	        				
+	        				/**
+	        				 *  $window.sessionStorage.getItem(key) to retrieve and 
+	        				 *  $window.localStorage.removeItem(key) to remove Key 
+	        				 *  
+	        				 * 
+	        				 */
+	        				
+	        			    $state.go('home.dashboard.userPlan');
 
 
  
