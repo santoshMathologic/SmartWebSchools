@@ -17,6 +17,7 @@ angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$stat
 					
        
        $scope.dologin = function(username, password,searchModel){
+    	   var hashedPassword = md5(password);
            
            if(searchModel.item==="CrewLink"){
            	console.log("DSADSA");

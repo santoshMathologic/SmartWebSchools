@@ -1,0 +1,30 @@
+{
+  "name": "bower-blueimp-md5",
+  "main": "js/md5.js",
+  "version": "2.1.1",
+  "homepage": "https://github.com/blueimp/JavaScript-MD5",
+  "authors": "https://github.com/blueimp/",
+  "contributors": [
+    {
+      "name": "Bruno Fachine",
+      "url": "https://github.com/BrunoDF"
+    }
+  ],
+  "description": "JavaScript MD5 implementation. Compatible with server-side environments like Node.js, module loaders like RequireJS, Browserify or webpack and all web browsers.",
+  "keywords": [
+    "javascript",
+    "md5"
+  ],
+  "ignore": [],
+  "license": "MIT",
+  "_release": "2.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.1",
+    "commit": "3a948cdd5e235d4170047a3a6d18ed01a06aa664"
+  },
+  "_source": "https://github.com/BrunoDF/JavaScript-MD5.git",
+  "_target": "2.1.1",
+  "_originalSource": "bower-blueimp-md5",
+  "_direct": true
+}
