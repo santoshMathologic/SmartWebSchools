@@ -59,8 +59,7 @@ public class AuthController {
 	    if (authorization != null && authorization.startsWith("Basic")) {
 
 	        String base64Credentials = authorization.substring("Basic".length()).trim();
-	        String credentials = new String(Base64.getDecoder().decode(base64Credentials),
-	                Charset.forName("UTF-8"));
+	        String credentials = new String(Base64.getDecoder().decode(base64Credentials),Charset.forName("UTF-8"));
 	        // credentials = username:password
 	        final String[] userCredentials= credentials.split(":",2);
 	        
