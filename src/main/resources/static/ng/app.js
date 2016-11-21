@@ -45,12 +45,14 @@ angular.module("smartWebApp",[
             config.headers['X-Key'] = $window.sessionStorage.user;
             config.headers['Content-Type'] = config.headers['Content-Type'] || "application/json";
           }
+          console.log("token Inteceptor: "+$window.sessionStorage.token);
+          console.log(config);
           return config || $q.when(config);
         },
      
         response: function(response) {
           if(response.status === 401 || response.status === 403) {
-                  $location.path('/login');
+                  $location.path('/');
               }
           return response || $q.when(response);
         }

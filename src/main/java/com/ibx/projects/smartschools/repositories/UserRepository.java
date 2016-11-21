@@ -12,7 +12,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import com.ibx.projects.smartschools.models.Role;
 import com.ibx.projects.smartschools.models.User;
+import com.ibx.projects.smartschools.models.UserPlan;
 
 
 
@@ -26,9 +28,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	User findByUsernameAndIsActive(@Param("Username") String username,
 			@Param("IsActive") Boolean isActive);
 
-	//User findByActivationKey(@Param("activationKey") String activationKey);
+	//User findByUsernameAndPassword(@Param("activationKey") String activationKey);
+	User findByUsernameAndPassword(@Param("Username") String username,
+			@Param("password") String password);
 
 	Page<User> findAll(Pageable pageable);
+	
+	Role findByRole_name(@Param("name") String roleName);
+	
+	
 	
 	List<User> findByUsernameContains(@Param("Username") String username);
 	
