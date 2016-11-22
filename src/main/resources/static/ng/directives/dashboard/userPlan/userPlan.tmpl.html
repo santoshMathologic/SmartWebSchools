@@ -19,6 +19,7 @@
 						<th>S.No</th>
 						<th>Plan name</th>
 						<th>User</th>
+						<th>created On</th>
 						<th>Action</th>
 						</tr>
 						
@@ -44,6 +45,9 @@
 								<th>{{$index+1}}</th>
 								<th>{{userplan.planName}}</th>
 								<th>{{userplan.user.username}}</th>
+								<th>{{userplan.timeStamp.dayOfWeek}}</th>
+								
+								
 								<th>
 									<button class="btn btn-xs btn-success" ng-click="selectUserPlan(userplan)">
 									 <span class="fa fa-bed fa-1x"></span>Select</button>

@@ -20,7 +20,6 @@ public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
 	 * 
 	 */
 	public LocalDateConverter() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

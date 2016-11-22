@@ -1,7 +1,6 @@
 package com.ibx.projects.smartschools.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -13,8 +12,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateTimeConverter;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.ibx.project.smartschools.Utils.LocalDateConverter;
+
+
 
 
 
@@ -59,11 +61,7 @@ public class UserPlan implements Serializable {
 	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
 	private Boolean markDelete;
 	
-	/*@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	@JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeSerializer.class)
-	private LocalDateTime createdTime = LocalDateTime.now();*/
-	
+
 	
 	private String co_planner;
 	@Column(columnDefinition="BIT(1) DEFAULT b'0'")
@@ -71,9 +69,13 @@ public class UserPlan implements Serializable {
 	
 	private String reviewer;
 	
-	@Convert(converter = LocalDateConverter.class)
 	@Column(unique=true,columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private LocalDate timestamp;
+	
+	//@JsonSerialize(using = LocalDateTimeSerializer.class)	
+	//@JsonDeserialize(using = LocalDateTimeDeSerializer.class)
+	@Convert(converter = LocalDateTimeConverter.class)
+	private LocalDateTime timeStamp = LocalDateTime.now();
+	
 	
 	
 	public UserPlan(){
@@ -98,7 +100,7 @@ public class UserPlan implements Serializable {
 		this.isLocked = isLocked;
 		this.user = user;
 		this.markDelete = markDelete;
-		//this.createdTime = createdTime;
+
 		this.co_planner = co_planner;
 		this.isUnderReviewer = isUnderReviewer;
 		this.reviewer = reviewer;
@@ -206,14 +208,43 @@ public class UserPlan implements Serializable {
 		this.isLocked = isLocked;
 	}
 
-	/*public LocalDateTime getCreatedTime() {
-		return createdTime;
+
+
+
+
+
+
+	public LocalDateTime getTimeStamp() {
+		return timeStamp;
 	}
 
 
-	public void setCreatedTime(LocalDateTime createdTime) {
-		this.createdTime = createdTime;
-	}*/
+
+
+
+
+
+	public void setTimeStamp(LocalDateTime timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 }

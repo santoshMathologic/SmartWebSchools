@@ -107,8 +107,8 @@ public class AuthController {
 
 		User user = userRepository.findByUsernameAndPassword(username, password);
 		if (!(user == null)) {
-			currentPlan = userPlanRepository.findByUser_username(username).getPlanName();
-			genertatedToken = generateJWTToken(user.getUsername(), user.getPassword(),user.getRole().getName(),currentPlan);  // generate JSONWEBBASED TOKEN
+			//currentPlan = userPlanRepository.findByUser_username(username).getPlanName();
+			genertatedToken = generateJWTToken(user.getUsername(), user.getPassword(),user.getRole().getName()/*,currentPlan*/);  // generate JSONWEBBASED TOKEN
 			
 		} else {
 			System.out.println("Role Undefined");
@@ -116,7 +116,7 @@ public class AuthController {
 		return genertatedToken;
 	}
 
-	public String generateJWTToken(String userName,String password, String roleCode, String currentPlan){
+	public String generateJWTToken(String userName,String password, String roleCode/*, String currentPlan*/){
 		
 		
 		
@@ -127,7 +127,7 @@ public class AuthController {
 		customToken.setUserName(userName);
 	    customToken.setPassword(password);
 	    customToken.setRoleCode(roleCode);
-	    customToken.setCurrentPlan(currentPlan);
+	   // customToken.setCurrentPlan(currentPlan);
         
 		
 		 // System.out.println(new Gson().toJson(authCont));
