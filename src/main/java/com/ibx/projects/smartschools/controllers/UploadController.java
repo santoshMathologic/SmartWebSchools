@@ -47,7 +47,6 @@ public class UploadController {
 
 	
 	public UploadController() {
-		// TODO Auto-generated constructor stub
 	}
 @RequestMapping(value="/getUpload",method = RequestMethod.GET)
 	public @ResponseBody Page<Upload> getAllClass(

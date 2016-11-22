@@ -3,16 +3,23 @@
  */
 package com.ibx.projects.smartschools.models;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateTimeConverter;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalTimeConverter;
 
 
 /**
@@ -23,6 +30,11 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="train_station")
 public class TrainStation {
+	
+	/*@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;*/
 	
 	@Id
     @GeneratedValue
@@ -36,29 +48,43 @@ public class TrainStation {
     @ManyToOne
     private Station station;
 
-    @NotNull
+    
     private Integer stopNumber;
-
     
     
-    @NotNull
-    private LocalTime arrival;
+    private String arrivalTime;
+    
+    
+    private String departureTime;
 
-    @NotNull
-    private LocalTime departure;
+    
+    @Convert(converter = LocalTimeConverter.class)
+    private LocalTime arrival = LocalTime.now();
 
-    @NotNull
+    
+    @Convert(converter = LocalTimeConverter.class)
+    private LocalTime departure = LocalTime.now();
+    
+    
+
+    
     @Enumerated(EnumType.ORDINAL)
 	private Day day;
     
-    @NotNull
+    
     private Integer dayOfJourney;
 
-    @NotNull
+    
     private Long distance;
 
-    @NotNull
+    
     private Long journeyDuration;
+    
+    private int arrivalMinutes;
+    private int departureMinutes;
+    
+    private int arrivalDay;
+    private int departureDay;
 
 	
 	public TrainStation() {
@@ -105,24 +131,7 @@ public class TrainStation {
 	}
 
 
-	public LocalTime getArrival() {
-		return arrival;
-	}
-
-
-	public void setArrival(LocalTime arrival) {
-		this.arrival = arrival;
-	}
-
-
-	public LocalTime getDeparture() {
-		return departure;
-	}
-
-
-	public void setDeparture(LocalTime departure) {
-		this.departure = departure;
-	}
+	
 
 
 	public Day getDay() {
@@ -162,6 +171,68 @@ public class TrainStation {
 
 	public void setJourneyDuration(Long journeyDuration) {
 		this.journeyDuration = journeyDuration;
+	}
+
+
+	
+
+	public String getArrivalTime() {
+		return arrivalTime;
+	}
+
+
+	public void setArrivalTime(String arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
+
+	public String getDepartureTime() {
+		return departureTime;
+	}
+
+
+	public void setDepartureTime(String departureTime) {
+		this.departureTime = departureTime;
+	}
+
+
+	public int getArrivalMinutes() {
+		return arrivalMinutes;
+	}
+
+
+	public void setArrivalMinutes(int arrivalMinutes) {
+		this.arrivalMinutes = arrivalMinutes;
+	}
+
+
+	public int getDepartureMinutes() {
+		return departureMinutes;
+	}
+
+
+	public void setDepartureMinutes(int departureMinutes) {
+		this.departureMinutes = departureMinutes;
+	}
+
+
+	public int getArrivalDay() {
+		return arrivalDay;
+	}
+
+
+	public void setArrivalDay(int arrivalDay) {
+		this.arrivalDay = arrivalDay;
+	}
+
+
+	public int getDepartureDay() {
+		return departureDay;
+	}
+
+
+	public void setDepartureDay(int departureDay) {
+		this.departureDay = departureDay;
 	}
 
 }

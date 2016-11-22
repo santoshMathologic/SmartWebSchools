@@ -3,11 +3,11 @@
  */
 package com.ibx.project.smartschools.serviceimpl;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.ibx.project.smartschools.dao.SmartSchoolDao;
 import com.ibx.project.smartschools.exception.SmartSchoolException;
 import com.ibx.project.smartschools.service.SmartSchoolService;
@@ -16,65 +16,42 @@ import com.ibx.project.smartschools.service.SmartSchoolService;
  * @author SANTOSH
  *
  */
-@Service
-public class SmartSchoolServiceImpl implements SmartSchoolService,Serializable {
 
-	/**
-	 * 
-	 */
+@Service ("SmartSchoolServiceManger")
+public class SmartSchoolServiceImpl implements SmartSchoolService {
+
 	@Autowired
-	private SmartSchoolDao smartSchoolDao;
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 
-	 */
-	public SmartSchoolServiceImpl() {
-	}
-
+	SmartSchoolDao smartschooldao;
 	@Override
-	
 	public Collection<?> loadList(String query) throws SmartSchoolException {
-		return smartSchoolDao.loadList(query);
-		
-	}
-
-	
-	
-	///  Getter and Setter
-	public SmartSchoolDao getSmartSchoolDao() {
-		return smartSchoolDao;
-	}
-
-	public void setSmartSchoolDao(SmartSchoolDao smartSchoolDao) {
-		this.smartSchoolDao = smartSchoolDao;
+		return smartschooldao.loadList(query);
 	}
 
 	@Override
 	public void saveInDb(Object object) throws SmartSchoolException {
-		smartSchoolDao.saveInDb(object);
-		
+		smartschooldao.saveInDb(object);
+
 	}
 
 	@Override
 	public void deleteFromDb(String query) throws SmartSchoolException {
-		smartSchoolDao.deleteFromDb(query);
+		smartschooldao.deleteFromDb(query);
 	}
 
 	@Override
 	public void updateInDb(Object object) throws SmartSchoolException {
-		smartSchoolDao.updateInDb(object);
-		
+		smartschooldao.updateInDb(object);
+
 	}
 
 	@Override
 	public Object loadUniqueObject(String query) throws SmartSchoolException {
-		return smartSchoolDao.loadUniqueObject(query);
+		return smartschooldao.loadUniqueObject(query);
 	}
 
 	@Override
 	public Object DeleteUniqueObject(String query) throws SmartSchoolException {
-		return smartSchoolDao.DeleteUniqueObject(query);
+		return smartschooldao.DeleteUniqueObject(query);
 	}
 
 }

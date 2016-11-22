@@ -1,5 +1,6 @@
 package com.ibx.projects.smartschools.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.websocket.server.PathParam;
@@ -12,7 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ibx.project.smartschools.exception.SmartSchoolException;
+import com.ibx.project.smartschools.service.SmartSchoolService;
 import com.ibx.projects.smartschools.models.Class_subject_table;
+import com.ibx.projects.smartschools.models.Class_table;
 import com.ibx.projects.smartschools.repositories.ClassSubjectRepository;
 
 
@@ -23,9 +28,39 @@ public class TestController {
 
 	@Autowired
 	private ClassSubjectRepository classSubjectRepository;
+	
+	 @Autowired
+	 SmartSchoolService smartSchoolService;
+	 
+	 
 	public TestController() {
 		
 	}
+	
+	
+	
+	@RequestMapping(value="/testClass",method = RequestMethod.GET)
+	public @ResponseBody void testAllClass(){
+		
+		
+		try {
+		@SuppressWarnings("unchecked")
+		List<Class_table> Class_tableList = (List<Class_table>) smartSchoolService.loadList(" from Class_table");
+		System.out.println(""+Class_tableList);
+		} catch (SmartSchoolException e) {
+			
+			e.printStackTrace();
+		}
+		
+		// return new Gson().toJson();
+		
+	}
+	
+			
+			
+			
+	
+	
 	@RequestMapping(value="/getClass",method = RequestMethod.GET)
 	public @ResponseBody Page<Class_subject_table> getAllClass(
 			

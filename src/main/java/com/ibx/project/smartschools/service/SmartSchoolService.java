@@ -7,13 +7,12 @@ import java.util.Collection;
 
 import com.ibx.project.smartschools.exception.SmartSchoolException;
 
-
 /**
  * @author SANTOSH
  *
  */
-
-public interface SmartSchoolService{
+public interface SmartSchoolService {
+	
 	Collection<?> loadList(String query)throws SmartSchoolException;
 	void saveInDb(Object object)throws SmartSchoolException;
 
