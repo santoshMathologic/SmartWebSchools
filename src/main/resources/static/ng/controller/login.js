@@ -22,8 +22,9 @@ angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$stat
            if(searchModel.item==="CrewLink"){
            	console.log("DSADSA");
            }
-
-		UserAuthFactory.loginFactory(username,password).success(function(response){
+        
+        $scope.isLoggedIn = AuthFactory.isLoggedIn();
+       UserAuthFactory.loginFactory(username,password).success(function(response){
 	        
 	        				var userTokenObj = JSON.parse(JSON.stringify(response));
 	        				
@@ -33,12 +34,11 @@ angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$stat
 	        				AuthFactory.isLogged = true;
 	        				AuthFactory.userName = userTokenObj .userName;
 	        				AuthFactory.userRole = userTokenObj.roleCode;
-	        				AuthFactory.currentPlan = userTokenObj.currentPlan;
 	        				
 	        				$window.sessionStorage.setItem("token",userTokenObj.token);
 	        				$window.sessionStorage.setItem("userName",userTokenObj.userName);
 	        				$window.sessionStorage.setItem("userRole",userTokenObj.roleCode);
-	        				$window.sessionStorage.setItem("currentPlan",userTokenObj.currentPlan);
+	        				//$window.sessionStorage.setItem("currentPlan",userTokenObj.currentPlan);
 	        				
 	        				/**
 	        				 *  $window.sessionStorage.getItem(key) to retrieve and 

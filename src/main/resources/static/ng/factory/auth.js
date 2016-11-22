@@ -47,14 +47,13 @@ app.factory("UserAuthFactory", function($state, $window, $cookies, $location,
 		logoutFactory : function() {
 			if (AuthFactory.isLogged) {
 				AuthFactory.isLogged = false;
-				delete AuthFactory.user;
+				delete AuthFactory.userName;
 				delete AuthFactory.userRole;
-				delete $window.sessionStorage.userPlan;
-				delete $window.sessionStorage.token;
-				delete $window.sessionStorage.user;
-				delete $window.sessionStorage.userRole;
+				$window.sessionStorage.removeItem("token");
+				$window.sessionStorage.removeItem("userName");
+				$window.sessionStorage.removeItem("userRole");
 				$cookies = {};
-				$state.go("home.login");
+				$state.go("login");
 			}
 
 		}

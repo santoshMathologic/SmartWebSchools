@@ -3,7 +3,11 @@ angular.module('smartWebApp')
         return {
             restrict: 'E',
             templateUrl: 'ng/directives/dashboard/sidebar/sidebar.tmpl.html',
-            controller: function($scope, $state, $http, $log, $q, $timeout, $window) {
+            controller: function($scope, $state, $http, $log, $q, $timeout, $window,UserAuthFactory) {
+            	
+            	  $scope.logout = function(){
+            		  UserAuthFactory.logoutFactory();
+            	  }
             	
             	$scope.customDialogOptions = {
             	        message: 'This is a message!',
@@ -55,6 +59,8 @@ angular.module('smartWebApp')
             		            callback: function() { $scope.addAction('Main...!', true) }
             		        }
             		    };
+            	  
+            	
               
                 
             }
