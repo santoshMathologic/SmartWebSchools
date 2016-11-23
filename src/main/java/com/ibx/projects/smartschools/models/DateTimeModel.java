@@ -1,4 +1,4 @@
-package com.ibx.projects.smartschools.custom.models;
+package com.ibx.projects.smartschools.models;
 
 import com.ibx.projects.smartschools.models.Day;
 

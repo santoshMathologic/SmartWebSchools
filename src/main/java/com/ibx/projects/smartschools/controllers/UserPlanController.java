@@ -5,17 +5,18 @@ package com.ibx.projects.smartschools.controllers;
 
 import javax.websocket.server.PathParam;
 
+import org.jboss.logging.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ibx.projects.smartschools.models.Class_table;
 import com.ibx.projects.smartschools.models.UserPlan;
 import com.ibx.projects.smartschools.repositories.UserPlanRepository;
 import com.ibx.projects.smartschools.repositories.UserRepository;
@@ -57,6 +58,31 @@ public class UserPlanController {
 			
 		}
 		return "plan Created Successfully";
+	}
+	
+	@RequestMapping(value="/updatePlan",method  = RequestMethod.PUT)
+	public String updatePlan(@PathParam("id") Long id,@RequestBody UserPlan userplan){
+		
+		if(userplan!=null){
+			UserPlan plan  =  userplanRepository.findOne(id);
+			plan.setPlanName(userplan.getPlanName());
+			userplanRepository.save(plan);
+			
+			
+		}
+		return "Updated Plan Successfully";
+	}
+	@RequestMapping(value="/removePlan",method  = RequestMethod.DELETE)
+	public String removePlan(@PathParam("id") Long id){
+		
+		
+			if(id!=null){
+				userplanRepository.delete(id);	
+			}
+			
+			
+		
+		return "deleted Plan Successfully";
 	}
 	
 	@RequestMapping(value="/getUserPlan",method = RequestMethod.GET)
