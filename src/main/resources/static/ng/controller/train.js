@@ -10,6 +10,7 @@ angular.module("smartWebApp").controller("trainCtrl", function($scope,$state,$ht
 	var trainurl = apiTrainUrl
 			+ "/getTrainList";
 	$scope.isLoading = true;
+	$scope.Days = Days;
 	
 
 	$scope.serverFetch = new ServerTableFetch(

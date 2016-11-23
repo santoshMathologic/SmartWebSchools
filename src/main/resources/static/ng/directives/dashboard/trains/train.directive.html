@@ -33,10 +33,10 @@
 					<tr>
 						<th>S.No.</th>
 						<th>TrainNo</th>
-						<th>Name</th>
-						<th>fromStation</th>
-						<th>toStation</th>
-						<th>days</th>
+						<th>TrainName</th>
+						<th>FromStation</th>
+						<th>ToStation</th>
+						<th>Days</th>
 						<th>TrainType</th>
 						<th>Actions</th>
 					</tr>
@@ -44,6 +44,16 @@
 						<th>&nbsp;</th>
 						<th><input type="text" class="form-control input-sm"
 							placeholder="train No" style="width: 80px" /></th>
+							<th><input type="text" class="form-control input-sm"
+							placeholder="train Name" style="width: 80px" /></th>
+							<th><input type="text" class="form-control input-sm"
+							placeholder="From Station" style="width: 80px" /></th>
+							<th><input type="text" class="form-control input-sm"
+							placeholder="To Station" style="width: 80px" /></th>
+							<th><input type="text" class="form-control input-sm"
+							placeholder="start Day" style="width: 80px" /></th>
+							<th><input type="text" class="form-control input-sm"
+							placeholder="Train Type" style="width: 80px" /></th>
 						<th>&nbsp;</th>
 					</tr>
 				</thead>
@@ -56,7 +66,8 @@
 							({{trainlist.fromStation.code}})</td>
 						<td>{{trainlist.toStation.name}}
 							({{trainlist.toStation.code}})</td>
-						<td>{{trainlist.startDay}}</td>
+						
+						<td><span>{{trainlist.startDay | limitTo: 3}} </span></td>
 						<td>{{trainlist.trainType.name}}</td>
 
 						<td><a class="btn btn-xs btn-warning fa fa-pencil fa-1x" title="Edit"

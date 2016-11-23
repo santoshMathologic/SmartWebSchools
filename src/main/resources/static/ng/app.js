@@ -173,7 +173,8 @@ angular.module("smartWebApp",[
               name:'smartWebApp',
               files:[
               'ng/directives/dashboard/trains/train.js',
-              'ng/controller/train.js'
+              'ng/controller/train.js',
+              'ng/utils/daysUtil.js',
               ]
             });
           }

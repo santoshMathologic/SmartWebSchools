@@ -2,9 +2,8 @@ package com.ibx.projects.smartschools.controllers.testing;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
@@ -25,9 +25,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ibx.project.smartschools.exception.SmartSchoolException;
 import com.ibx.project.smartschools.service.SmartSchoolService;
+import com.ibx.projects.smartschools.helpers.CSVtoDataBase;
 import com.ibx.projects.smartschools.models.Class_subject_table;
 import com.ibx.projects.smartschools.models.Class_table;
 import com.ibx.projects.smartschools.repositories.ClassSubjectRepository;
+import com.opencsv.CSVReader;
 
 
 @Controller
@@ -41,6 +43,15 @@ public class TestController {
 	 @Autowired
 	 SmartSchoolService smartSchoolService;
 	 
+	 
+	 @Autowired
+	 @Qualifier("TrainDetails")
+	 CSVtoDataBase trainDetailsCsvToDatabase;
+	 
+	 
+	 @Autowired
+	 @Qualifier("TrainTimeTableDetails")
+	 CSVtoDataBase trainTimeTableDetailsCsvToDatabase;
 	 
 	public TestController() {
 		
@@ -69,8 +80,8 @@ public class TestController {
 		
 	
 
-	@RequestMapping(value="/handleTrainStation",method = RequestMethod.POST,headers=("content-type=multipart/*"))
-	public @ResponseBody void handleTrainStation(@RequestParam("file") MultipartFile traindetailsfile,HttpServletRequest request)throws IOException{
+	@RequestMapping(value="/handleTrainDetails",method = RequestMethod.POST,headers=("content-type=multipart/*"))
+	public @ResponseBody String handleTrainDetails(@RequestParam("file") MultipartFile traindetailsfile,HttpServletRequest request)throws IOException{
 		 String OriginalFilename  = traindetailsfile.getOriginalFilename();
 		 String absolutePath = new File("src/main/resources").getAbsolutePath();
              
@@ -93,13 +104,49 @@ public class TestController {
 	          stream.close();
 		  }
 	          
+		  CSVReader reader = new CSVReader(new FileReader(file),',','\'',1);
+          for (String[] line; (line = reader.readNext()) != null;) {
+        	  trainDetailsCsvToDatabase.processRecordToTable(line);
+          }
 	
-           
+          return "You successfully uploaded !";
 		 
 		
 	}
 			
+	@RequestMapping(value="/handleTrainTimeDetails",method = RequestMethod.POST,headers=("content-type=multipart/*"))
+	public @ResponseBody String handleTrainTimeDetails(@RequestParam("file") MultipartFile traindetailsfile,HttpServletRequest request)throws IOException{
+		 String OriginalFilename  = traindetailsfile.getOriginalFilename();
+		 String absolutePath = new File("src/main/resources").getAbsolutePath();
+             
+      File currentDirectory = new File(absolutePath+"/uploadFiles");
+      if (!currentDirectory.exists()) {
+			try {
+				currentDirectory.mkdir();
+			    } catch (SecurityException se) {
+				   throw new IOException("Error in Creating Directory" + se.getMessage());
+			    }
+			
+		 }
+		  File file = new File(currentDirectory + "\\"+OriginalFilename);  
+		  if (!file.exists()){
+			  file.createNewFile();
+			  byte[] bytes = traindetailsfile.getBytes();
+	          BufferedOutputStream stream =
+	                  new BufferedOutputStream(new FileOutputStream(file));
+	          stream.write(bytes);
+	          stream.close();
+		  }
+	          
+		  CSVReader reader = new CSVReader(new FileReader(file),',','\'',1);
+          for (String[] line; (line = reader.readNext()) != null;) {
+        	  trainTimeTableDetailsCsvToDatabase.processRecordToTable(line);
+          }
 	
+          return "You successfully uploaded !";
+		 
+		
+	}
 	
 	@RequestMapping(value="/getClass",method = RequestMethod.GET)
 	public @ResponseBody Page<Class_subject_table> getAllClass(
