@@ -5,4 +5,4 @@
  * @author SANTOSH
  *
  */
-package com.ibx.project.smartschools.Utils;
+package com.ibx.project.smartschools.utils;

@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.ibx.project.smartschools.exception.SmartSchoolException;
 import com.ibx.project.smartschools.service.SmartSchoolService;
 import com.ibx.projects.smartschools.helpers.CSVtoDataBase;
 import com.ibx.projects.smartschools.models.Class_subject_table;
 import com.ibx.projects.smartschools.models.Class_table;
+import com.ibx.projects.smartschools.repositories.ClassRepository;
 import com.ibx.projects.smartschools.repositories.ClassSubjectRepository;
 import com.opencsv.CSVReader;
 
@@ -52,6 +54,9 @@ public class TestController {
 	 @Autowired
 	 @Qualifier("TrainTimeTableDetails")
 	 CSVtoDataBase trainTimeTableDetailsCsvToDatabase;
+	 
+	 @Autowired
+	 private ClassRepository classRepository; 
 	 
 	public TestController() {
 		
@@ -191,6 +196,14 @@ public class TestController {
 		return classList;
 		
 		  
+	}
+	@RequestMapping(value="/ListAllClass",method = RequestMethod.GET)
+	public @ResponseBody  String ListAllClass(){
+		
+		List<Class_table> classList  =  classRepository.findAll();
+		
+		return new Gson().toJson(classList);
+		
 	}
 
 }

@@ -3,6 +3,8 @@
  */
 package com.ibx.projects.smartschools.repositories;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -48,5 +50,7 @@ public interface ClassRepository extends JpaRepository<Class_table, Long> {
 			@Param("section8") String section8,
 			@Param("section9") String section9,
 			@Param("section10") String section10, Pageable pageable);
+	
+	         
 
 }

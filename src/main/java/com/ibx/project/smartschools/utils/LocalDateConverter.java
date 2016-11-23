@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ibx.project.smartschools.Utils;
+package com.ibx.project.smartschools.utils;
 
 import java.sql.Date;
 import java.time.LocalDate;

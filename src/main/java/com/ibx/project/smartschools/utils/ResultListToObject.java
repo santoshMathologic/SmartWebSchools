@@ -1,4 +1,4 @@
-package com.ibx.project.smartschools.Utils;
+package com.ibx.project.smartschools.utils;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
