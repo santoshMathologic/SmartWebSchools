@@ -37,6 +37,17 @@ angular.module("smartWebApp").controller("trainCtrl", function($scope,$state,$ht
 		  
 	 }
 	 $scope.getTrainList();
+	 
+	 $scope.checkDetails = function(column){
+			if (column === null || typeof column !== 'object') {
+					throw new Error("Coloum is empty");
+				}
+				if (column.trainNo === null || column.originateDay === null) {
+					throw new Error("train no and start day is not defined");
+				}
+		  $state.go("home.dashboard.trainstation",{trainNumber:column.trainNo,startDay:column.OriginateDay[0]});
+	 }
+	  
 	
 
 /*	$scope.serverFetch = new ServerTableFetch(

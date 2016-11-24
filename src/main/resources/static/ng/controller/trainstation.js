@@ -1,11 +1,14 @@
 /*jshint sub:true*/
 ' use strict';
-angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$http) {
+angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$http,$stateParams,$state) {
 	console.log("Inside train station Controller");
 	
 	
 	console.log("DASDAS");
 	$scope.trainStationsList = [];
+	
+	 $scope.trainNo = $stateParams.trainNumber;
+	 $scope.startDay = $stateParams.startDay;
 	
 	var trainstationUrl = apiTrainStationUrl
 			+ "/getStationList";
@@ -15,7 +18,9 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	$scope.query = {
 			 limit:10,
 	         perPage:1,
-	         orderBy:"stopNumber"
+	         orderBy:"stopNumber",
+	         trainNumber: $scope.trainNo,
+	         startDay:$scope.startDay
 	         }
 	
 	 $scope.getTrainStationList  = function(){

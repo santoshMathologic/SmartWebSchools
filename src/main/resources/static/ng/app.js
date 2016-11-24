@@ -183,7 +183,7 @@ angular.module("smartWebApp",[
           }
         }
       }).state('home.dashboard.trainstation',{
-          url:'/trainstation',
+          url:'/trainstation/:trainNumber/:startDay',
           templateUrl:'ng/directives/dashboard/trainStation/trainstation.directive.html',
           controller:"trainstationCtrl",
           resolve: {
