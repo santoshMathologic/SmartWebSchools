@@ -11,7 +11,7 @@ public class TimeCalculator {
 	public TimeCalculator() {
 		
 	}
-	public int hoursToMinutes(String time){
+	static public int hoursToMinutes(String time){
        String [] hrMin = time.split(":");
         return Integer.parseInt(hrMin[0])*60+Integer.parseInt(hrMin[1]);
     }

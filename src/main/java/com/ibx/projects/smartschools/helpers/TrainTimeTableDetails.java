@@ -48,6 +48,8 @@ public class TrainTimeTableDetails implements CSVtoDataBase {
 		Station station = null;
 		TrainStation trainStation = null;
 	    Integer trainNo =   Integer.parseInt(columns[0]);
+	    int arrivalday = 0;
+	    int departureDay = 0;
 		           
 		          
 		           if(station==null){
@@ -65,11 +67,28 @@ public class TrainTimeTableDetails implements CSVtoDataBase {
 		            	trainStation.setArrivalTime(columns[4]);
 		            	trainStation.setDepartureTime(columns[5]);
 						trainStation.setDistance(Long.parseLong(columns[6]));
-						
-						TimeCalculator tc = new TimeCalculator(); 
+						trainStation.setStopNumber(Integer.parseInt(columns[1]));
+					 	trainStation.setArrivalMinutes(TimeCalculator.hoursToMinutes(trainStation.getArrivalTime()));
+					 	trainStation.setDepartureMinutes(TimeCalculator.hoursToMinutes(trainStation.getDepartureTime()));
 					 	
-					 	trainStation.setArrivalMinutes(tc.hoursToMinutes(trainStation.getArrivalTime()));
-					 	trainStation.setDepartureMinutes(tc.hoursToMinutes(trainStation.getDepartureTime()));
+					 	if(trainStation.getDayOfJourney()!=null){
+					 		arrivalday =  trainStation.getDayOfJourney()-1;
+					 		trainStation.setArrivalDay(arrivalday);	
+					 	}
+					 	
+					 	
+					 	
+					 	if (trainStation.getArrivalMinutes() > trainStation.getDepartureMinutes()) {
+				            departureDay = arrivalday+ 1;
+				            trainStation.setDepartureDay(departureDay);
+				            
+				        }
+				        else {
+				            departureDay = arrivalday;
+				            trainStation.setDepartureDay(departureDay);
+				        }
+					 	
+					 	
 						
 						if (trainStation.getDistance()>0) {
 							
