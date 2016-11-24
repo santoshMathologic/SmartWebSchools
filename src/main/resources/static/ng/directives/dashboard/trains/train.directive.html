@@ -33,10 +33,11 @@
 				st-pipe="serverFetch.process" st-table="trainLists">
 				<thead>
 					<tr>
+						<th>Details</th>
 						<th>S.No.</th>
 						<th>TrainNo</th>
 						<th>TrainName</th>
-						<th>Originate Day</th>
+						<th>Running Days</th>
 						<th>FromStation</th>
 						<th>ToStation</th>
 						
@@ -45,23 +46,24 @@
 					</tr>
 					<tr>
 						<th>&nbsp;</th>
+						<th>&nbsp;</th>
 						<th><input type="text" class="form-control input-sm"
 							placeholder="train No" style="width: 80px" /></th>
 							<th><input type="text" class="form-control input-sm"
 							placeholder="train Name" style="width: 80px" /></th>
 							
 							<th>&nbsp;</th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="To Station" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="start Day" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="Train Type" style="width: 80px" /></th>
+						
 						<th>&nbsp;</th>
 					</tr>
 				</thead>
 				<tbody ng-show="!isLoading">
 					<tr ng-repeat="trainlist in trainsList">
+						
+						<td><a class="btn btn-xs btn-success fa fa-list fa-1x" title="Edit"
+							ng-click="selectTrain()"
+							ng-show="true"> 
+							</a> </td>
 						<td>{{$index+1}}</td>
 						<td>{{trainlist.trainNo}}</td>
 						<td>{{trainlist.trainName}}</td>
