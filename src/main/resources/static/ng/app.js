@@ -177,6 +177,7 @@ angular.module("smartWebApp",[
               'ng/directives/dashboard/trains/train.js',
               'ng/controller/train.js',
               'ng/utils/daysUtil.js',
+              'ng/utils/customTrainConverter.js'
               ]
             });
           }

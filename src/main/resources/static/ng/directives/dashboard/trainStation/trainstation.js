@@ -4,7 +4,7 @@
 angular
 		.module('smartWebApp')
 		.directive(
-				'train',
+				'trainStation',
 				[
 						'$compile',
 						function($compile) {

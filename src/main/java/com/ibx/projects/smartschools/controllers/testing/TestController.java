@@ -11,6 +11,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
 
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -29,6 +31,7 @@ import com.ibx.project.smartschools.service.SmartSchoolService;
 import com.ibx.projects.smartschools.helpers.CSVtoDataBase;
 import com.ibx.projects.smartschools.models.Class_subject_table;
 import com.ibx.projects.smartschools.models.Class_table;
+import com.ibx.projects.smartschools.models.Station;
 import com.ibx.projects.smartschools.repositories.ClassRepository;
 import com.ibx.projects.smartschools.repositories.ClassSubjectRepository;
 import com.opencsv.CSVReader;
@@ -58,10 +61,35 @@ public class TestController {
 	 @Autowired
 	 private ClassRepository classRepository; 
 	 
+	 @Autowired
+	private SessionFactory sessionFactory;
+	 
 	public TestController() {
 		
 	}
 	
+	@RequestMapping(value="/getStationsList",method = RequestMethod.GET)
+	public @ResponseBody String getStationsList(
+			@PathParam("orderBy") String orderBy,
+			@PathParam("limit") int limit,
+			@PathParam("perPage")int perPage
+			){
+		
+
+		
+		Query q = sessionFactory.openSession().createQuery(" FROM Station ");
+		q.setFirstResult(perPage);
+		q.setMaxResults(limit);
+		List<Station>stationList  = q.list();
+		
+		
+		
+		return "The Size of Station"+stationList.size();
+		
+	
+		
+		  
+	}
 	
 	
 	@RequestMapping(value="/testClass",method = RequestMethod.GET)

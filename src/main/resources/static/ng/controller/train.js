@@ -5,15 +5,41 @@ angular.module("smartWebApp").controller("trainCtrl", function($scope,$state,$ht
 	
 
 	console.log("DASDAS");
-	$scope.trainsList = [];
+	$scope.trainsLists = [];
+	$scope.trainsList =[]
 	$scope.crewLinksListCSVRecords = [];
-	var trainurl = apiTrainUrl
+	var trainUrl = apiTrainUrl
 			+ "/getTrainList";
 	$scope.isLoading = true;
 	$scope.Days = Days;
 	
+	
+	 $scope.query = {
+        	perPage:1,
+            limit:100,
+            orderBy:"trainNo"
+           
+        };
+	
+	 $scope.getTrainList  = function(){
+		 $scope.isLoading = true;
+		  $http.get(trainUrl ,{params:$scope.query}).then(function(successResponse){
+			  $scope.trainsLists  = successResponse.data.content;
+			  $scope.trainsList = findTrainDuplicate($scope.trainsLists);
+			  $scope.isLoading = false;
+	          		  
+		  },function(errorResponse){
+			  
+			   
+		  });
+		 
+		 
+		  
+	 }
+	 $scope.getTrainList();
+	
 
-	$scope.serverFetch = new ServerTableFetch(
+/*	$scope.serverFetch = new ServerTableFetch(
 			trainurl,
 			$http,
 			function() {
@@ -22,6 +48,6 @@ angular.module("smartWebApp").controller("trainCtrl", function($scope,$state,$ht
 			function(resultObj) {
 				$scope.trainsList = resultObj.content;
 				$scope.isLoading = false;
-			});
+			});*/
  
 });

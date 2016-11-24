@@ -36,46 +36,24 @@ public class TrainController {
 	@Autowired
 	TrainRepository trainRepository;
 	
-	@Autowired
-	private SessionFactory sessionFactory;
+	
 	public TrainController() {
 		// TODO Auto-generated constructor stub
 	}
 	@RequestMapping(value="/getTrainList",method = RequestMethod.GET)
 	public @ResponseBody Page<Train> getTrainList(
-			@PathParam("ordeBy") String ordeBy,
+			@PathParam("orderBy")String orderBy,
 			@PathParam("limit") int limit,
 			@PathParam("perPage")int perPage
 			){
 		
-		PageRequest page1 = new PageRequest(perPage,limit, Direction.ASC, ordeBy);
+		PageRequest page1 = new PageRequest(perPage,limit, Direction.ASC, orderBy);
 		Page<Train>trainList  = trainRepository.findAll(page1);
 		  return trainList;
 		
 		  
 	}
 	
-	@RequestMapping(value="/getStationsList",method = RequestMethod.GET)
-	public @ResponseBody String getStationsList(
-			@PathParam("ordeBy") String ordeBy,
-			@PathParam("limit") int limit,
-			@PathParam("perPage")int perPage
-			){
-		
 
-		
-		Query q = sessionFactory.openSession().createQuery(" FROM Station ");
-		q.setFirstResult(perPage);
-		q.setMaxResults(limit);
-		List<Station>stationList  = q.list();
-		
-		
-		
-		return "The Size of Station"+stationList.size();
-		
-	
-		
-		  
-	}
 
 }

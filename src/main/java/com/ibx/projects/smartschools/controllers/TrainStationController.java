@@ -42,12 +42,13 @@ public class TrainStationController {
 	
 	@RequestMapping(value="/getStationList",method = RequestMethod.GET)
 	public @ResponseBody Page<TrainStation> getAllStation(
-			@PathParam("ordeBy") String ordeBy,
+			@PathParam("orderBy") String orderBy,
 			@PathParam("limit") int limit,
 			@PathParam("perPage")int perPage
 			){
 		
-		PageRequest page1 = new PageRequest(perPage,limit, Direction.ASC, ordeBy);
+		//perPage = (perPage!=0) ? perPage:10;
+		PageRequest page1 = new PageRequest(perPage,limit, Direction.ASC, orderBy);
 		Page<TrainStation>trainStationList  = trainStationRepository.findAll(page1);
 		  return trainStationList;
 		

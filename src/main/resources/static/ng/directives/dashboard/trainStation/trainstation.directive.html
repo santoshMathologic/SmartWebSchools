@@ -1,9 +1,16 @@
 <div>
 <br>
 <br>
-	<div class="page-header animated infinite bounce">
+
+	<div class="page-header">
 		<h3>{{title}}</h3>
 	</div>
+
+
+<div class="page-header">
+		<h1>Train Time Table</h1>
+	</div>
+
 
 
 
@@ -34,59 +41,43 @@
 						<th>S.No.</th>
 						<th>TrainNo</th>
 						<th>TrainName</th>
-						<th>FromStation</th>
-						<th>ToStation</th>
+						<th>Code</th>
+						<th>StationName</th>
+						<th>Arrival</th>
+						<th>Departure</th>
+						<th>Arrival(Min)</th>
+						<th>Departure(Min)</th>
 						<th>Days</th>
-						<th>TrainType</th>
-						<th>Actions</th>
+						<th>Day of Journey</th>
+						<th>Distance (in KM)</th>
+						<th>Journey Duration (in Mins)</th>
 					</tr>
 					<tr>
 						<th>&nbsp;</th>
 						<th><input type="text" class="form-control input-sm"
 							placeholder="train No" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="train Name" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="From Station" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="To Station" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="start Day" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="Train Type" style="width: 80px" /></th>
-						<th>&nbsp;</th>
+							
+						
 					</tr>
 				</thead>
 				<tbody ng-show="!isLoading">
 					<tr ng-repeat="trainstationslist in trainStationsList">
 						<td>{{$index+1}}</td>
 						<td>{{trainstationslist.train.trainNo}}</td>
+						<td>{{trainstationslist.train.trainName | limitTo :5}}</td>
+						<td>{{trainstationslist.station.code}}</td>
+						<td>{{trainstationslist.station.name}}</td>
 						<td>{{trainstationslist.arrivalTime}}</td>
-						<td>{{trainlist.fromStation.name}}
-							({{trainlist.fromStation.code}})</td>
-						<td>{{trainlist.toStation.name}}
-							({{trainlist.toStation.code}})</td>
+						<td>{{trainstationslist.departureTime}}</td>
+						<td>{{trainstationslist.arrivalMinutes}}</td>
+						<td>{{trainstationslist.departureMinutes}}</td>
+						<td></td>
+						<td>{{trainstationslist.dayOfJourney}}</td>
+						<td>{{trainstationslist.distance}}</td>
 						
-						<td><span>{{trainlist.startDay | limitTo: 3}} </span></td>
-						<td>{{trainlist.trainType.name}}</td>
-
-						<td><a class="btn btn-xs btn-warning fa fa-pencil fa-1x" title="Edit"
-							ng-click="selectTrain(trainItem[trains.fields.id])"
-							ng-show="true"> 
-							</a> 
-							
-							<a
-							class="btn btn-xs btn-danger fa fa-trash fa-1x"
-							ng-click="removeTrain(trainItem[trains.fields.id])"
-							ng-show="true"
-							confirm="Are you sure to delete Train: '{{trainItem[trains.fields.trainNo]}}-{{trainItem[trains.fields.startDay]}}' !!!"
-							confirm-settings="{size: 'md'}"
-							confirm-header-class="confirm-header-danger "
-							confirm-footer-class="confirm-footer-default"
-							confirm-ok-button-class="btn-danger"
-							confirm-cancel-button-class="btn-default"
-							confirm-title="Confirm Deletion!!" confirm-ok="Yes"
-							confirm-cancel="No" title="Remove"> </a></td>
+						
+						
+						
 
 
 					</tr>
@@ -126,5 +117,5 @@
 
 
 
-<train></train>
+<train-station></train-station>
 </div>

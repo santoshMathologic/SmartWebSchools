@@ -7,10 +7,10 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	console.log("DASDAS");
 	$scope.trainStationsList = [];
 	
-	var trainstnUrl = trainStationUrl
+	var trainstationUrl = apiTrainStationUrl
 			+ "/getStationList";
 	$scope.isLoading = true;
-	$scope.Days = Days;
+	//$scope.Days = Days;
 	
 	$scope.query = {
 			 limit:10,
@@ -20,9 +20,8 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	
 	 $scope.getTrainStationList  = function(){
 		 $scope.isLoading = true;
-		  $http.get(trainstnUrl,{params:$scope.query}).then(function(successResponse){
-			  
-			  $scope.trainStationsList  = successResponse.content;
+		  $http.get(trainstationUrl,{params:$scope.query}).then(function(successResponse){
+			  $scope.trainStationsList  = successResponse.data.content;
 			  $scope.isLoading = false;
 	          		  
 		  },function(errorResponse){

@@ -1,7 +1,9 @@
 <div>
 <br>
 <br>
-	<div class="page-header animated infinite bounce">
+	<!--  <div class="page-header animated infinite bounce"> -->
+	
+	<div class="page-header">
 		<h3>{{title}}</h3>
 	</div>
 
@@ -34,9 +36,10 @@
 						<th>S.No.</th>
 						<th>TrainNo</th>
 						<th>TrainName</th>
+						<th>Originate Day</th>
 						<th>FromStation</th>
 						<th>ToStation</th>
-						<th>Days</th>
+						
 						<th>TrainType</th>
 						<th>Actions</th>
 					</tr>
@@ -46,8 +49,8 @@
 							placeholder="train No" style="width: 80px" /></th>
 							<th><input type="text" class="form-control input-sm"
 							placeholder="train Name" style="width: 80px" /></th>
-							<th><input type="text" class="form-control input-sm"
-							placeholder="From Station" style="width: 80px" /></th>
+							
+							<th>&nbsp;</th>
 							<th><input type="text" class="form-control input-sm"
 							placeholder="To Station" style="width: 80px" /></th>
 							<th><input type="text" class="form-control input-sm"
@@ -62,13 +65,11 @@
 						<td>{{$index+1}}</td>
 						<td>{{trainlist.trainNo}}</td>
 						<td>{{trainlist.trainName}}</td>
-						<td>{{trainlist.fromStation.name}}
-							({{trainlist.fromStation.code}})</td>
-						<td>{{trainlist.toStation.name}}
-							({{trainlist.toStation.code}})</td>
+						<td><span ng-repeat="day in trainlist.OriginateDay">{{day | limitTo: 3}} </span></td>
+						<td>{{trainlist.fromStation}}</td>
+						<td>{{trainlist.toStation}}</td>
 						
-						<td><span>{{trainlist.startDay | limitTo: 3}} </span></td>
-						<td>{{trainlist.trainType.name}}</td>
+						<td>{{trainlist.trainType}}</td>
 
 						<td><a class="btn btn-xs btn-warning fa fa-pencil fa-1x" title="Edit"
 							ng-click="selectTrain(trainItem[trains.fields.id])"

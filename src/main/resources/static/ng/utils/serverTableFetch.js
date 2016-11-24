@@ -84,7 +84,7 @@ var ServerTableFetch = function (url, http, callBackBefore,
         var query = {
         	perPage:1,
             limit:10,
-            ordeBy:"trainNo"
+            orderBy:"trainNo"
            
         };
 
@@ -92,7 +92,6 @@ var ServerTableFetch = function (url, http, callBackBefore,
             .then(function (response) {
 
                 var resultObj = response.data;
-                console.log(resultObj);
                 tableState.pagination.numberOfPages = response.data.last;
                 tableState.pagination.totalItemCount = response.data.count;
                 resultObj.tableState = tableState;
