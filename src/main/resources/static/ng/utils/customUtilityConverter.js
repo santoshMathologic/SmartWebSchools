@@ -29,3 +29,21 @@ var findTrainDuplicate= function(trainList){
 	
 };
 
+var sortTrainStationbyStopNumber= function(trainstationsList){
+	var length = trainstationsList.length;
+    for (var i = 0; i < length - 1; i++) {
+        var min = i; 
+        for (var j = i + 1; j < length; j++) { 
+            if (trainstationsList[j].stopNumber < trainstationsList[min].stopNumber) { 
+                min = j; 
+            }
+        }
+        if (min != i) {
+            var tmp = trainstationsList[i].stopNumber;
+            trainstationsList[i].stopNumber = trainstationsList[min].stopNumber;
+            trainstationsList[min].stopNumber = tmp;
+        }
+    }
+    return trainstationsList;
+}
+

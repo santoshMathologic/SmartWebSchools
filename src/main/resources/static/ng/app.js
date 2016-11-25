@@ -177,7 +177,7 @@ angular.module("smartWebApp",[
               'ng/directives/dashboard/trains/train.js',
               'ng/controller/train.js',
               'ng/utils/daysUtil.js',
-              'ng/utils/customTrainConverter.js'
+              'ng/utils/customUtilityConverter.js'
               ]
             });
           }
@@ -193,6 +193,7 @@ angular.module("smartWebApp",[
                 files:[
                 'ng/directives/dashboard/trainStation/trainstation.js',
                 'ng/controller/trainstation.js',
+                'ng/utils/customUtilityConverter.js'
                 
                 ]
               });

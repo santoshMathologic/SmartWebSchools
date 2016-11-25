@@ -64,7 +64,7 @@
 					<tr ng-repeat="trainstationslist in trainStationsList">
 						<td>{{$index+1}}</td>
 						<td>{{trainstationslist.train.trainNo}}</td>
-						<td>{{trainstationslist.train.trainName | limitTo :5}}</td>
+						<td>{{trainstationslist.train.trainName | limitTo :20}}</td>
 						<td>{{trainstationslist.station.code}}</td>
 						<td>{{trainstationslist.station.name}}</td>
 						<td>{{trainstationslist.arrivalTime}}</td>

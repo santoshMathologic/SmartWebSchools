@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -29,6 +30,7 @@ import com.ibx.project.smartschools.utils.LocalTimeSerializer;;
 
 @Entity
 @Table(name="train_station")
+
 public class TrainStation {
 
 
@@ -37,7 +39,6 @@ public class TrainStation {
     @Column(name = "id", nullable = false)
     private Long id;
 	
-
 
     @NotNull
     @ManyToOne

@@ -6,6 +6,7 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	
 	console.log("DASDAS");
 	$scope.trainStationsList = [];
+	$scope.trainStationsLists = [];
 	
 	 $scope.trainNo = $stateParams.trainNumber;
 	 $scope.startDay = $stateParams.startDay;
@@ -16,7 +17,7 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	//$scope.Days = Days;
 	
 	$scope.query = {
-			 limit:10,
+			 limit:50,
 	         perPage:1,
 	         orderBy:"stopNumber",
 	         trainNumber: $scope.trainNo,
@@ -26,7 +27,9 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	 $scope.getTrainStationList  = function(){
 		 $scope.isLoading = true;
 		  $http.get(trainstationUrl,{params:$scope.query}).then(function(successResponse){
-			  $scope.trainStationsList  = successResponse.data.content;
+			  $scope.trainStationsLists  = successResponse.data.content;
+			  
+			  $scope.trainStationsList = sortTrainStationbyStopNumber($scope.trainStationsLists);
 			  $scope.isLoading = false;
 	          		  
 		  },function(errorResponse){
