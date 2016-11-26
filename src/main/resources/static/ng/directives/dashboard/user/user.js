@@ -5,7 +5,7 @@ angular.module('smartWebApp')
             templateUrl: 'ng/directives/dashboard/user/user.tmpl.html',
             controller: function($scope, $state, $http, $log, $q, $timeout, $window) {
               
-              console.log("DASDAS");
+             
                 
             }
 

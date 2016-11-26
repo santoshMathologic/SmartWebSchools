@@ -48,8 +48,8 @@ angular.module("smartWebApp",[
             config.headers['X-Key'] = $window.sessionStorage.user;
             config.headers['Content-Type'] = config.headers['Content-Type'] || "application/json";
           }
-          console.log("token Inteceptor: "+$window.sessionStorage.token);
-          console.log(config);
+          ("token Inteceptor: "+$window.sessionStorage.token);
+          (config);
           return config || $q.when(config);
         },
      
@@ -250,12 +250,12 @@ angular.module("smartWebApp",[
       });
   
 	
-             console.log("in app");
+          
 
 	}]).run(['$rootScope', '$location', function ($rootScope, $location) {
 	    $rootScope.$on('$routeChangeStart', function (event) {
 
-	      console.log("run");
+	      ("run");
 	    });
 	}]);
 

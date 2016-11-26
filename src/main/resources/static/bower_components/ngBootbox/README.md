@@ -185,7 +185,7 @@ Returns a promise that is resolved when the dialog is closed.
 
     $ngBootbox.alert('An important message!')
         .then(function() {
-            console.log('Alert closed');
+            ('Alert closed');
         });
 
 
@@ -197,9 +197,9 @@ Returns a promise that is resolved when if confirmed and rejected if dismissed.
 
     $ngBootbox.confirm('A question?')
         .then(function() {
-            console.log('Confirmed!');
+            ('Confirmed!');
         }, function() {
-            console.log('Confirm dismissed!');
+            ('Confirm dismissed!');
         });
 
 ### $ngBootbox.prompt(msg)
@@ -210,9 +210,9 @@ Returns a promise that is resolved when submitted and rejected if dismissed.
 
     $ngBootbox.prompt('Enter something')
         .then(function(result) {
-            console.log('Prompt returned: ' + result);
+            ('Prompt returned: ' + result);
         }, function() {
-            console.log('Prompt dismissed!');
+            ('Prompt dismissed!');
         });
 
 ### $ngBootbox.customDialog(options)

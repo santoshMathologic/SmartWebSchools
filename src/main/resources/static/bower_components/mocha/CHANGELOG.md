@@ -352,7 +352,7 @@ Thanks @entertainyou, @SimenB, @just-paja for the heads-up.
 * [#1981] - Fix HTML reporter handling of done and exceptions ([@Standard8])
 * [#1993] - propagate "file" property for "exports" interface ([@segrey])
 * [#1999] - Add support for strict mode ([@tmont])
-* [#2005] - XUnit Reporter Writes to stdout, falls back to console.log ([@jonnyreeves])
+* [#2005] - XUnit Reporter Writes to stdout, falls back to  ([@jonnyreeves])
 * [#2021] - Fix non ES5 compliant regexp ([@zetaben])
 * [#1965] - Don't double install BDD UI ([@cowboyd])
 * [#1995] - Make sure the xunit output dir exists before writing to it ([@ianwremmel])

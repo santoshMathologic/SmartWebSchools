@@ -15,4 +15,3 @@ var message = function(){
 }());
 
 
-console.log(""+app.message());

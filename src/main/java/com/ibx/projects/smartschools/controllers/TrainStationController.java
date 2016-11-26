@@ -79,7 +79,8 @@ public class TrainStationController {
 				+ "station.code,train.train_no,"
 				+ "train.train_name,"
 				+ "train_station.arrival_time,"
-				+ "train_station.stop_number "
+				+ "train_station.stop_number,"
+				+ "station.name "
 				+ "FROM `train_station`"
 				+ "JOIN `train` ON train_station.train_id = train.`id` "
 				+ "JOIN `station` "
@@ -120,6 +121,7 @@ public class TrainStationController {
 			t.setTrainName(row[4].toString());
 			ts.setArrivalTime(row[5].toString());
 			ts.setStopNumber(Integer.parseInt(row[6].toString()));
+			st.setName(row[7].toString());
 			ts.setTrain(t);
 			ts.setStation(st);
 			

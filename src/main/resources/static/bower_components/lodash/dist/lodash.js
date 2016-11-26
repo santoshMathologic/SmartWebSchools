@@ -2011,7 +2011,7 @@
      * };
      *
      * _.forIn(new Shape, function(value, key) {
-     *   console.log(key);
+     *   (key);
      * });
      * // => logs 'x', 'y', and 'move' (property order is not guaranteed across environments)
      */
@@ -2050,7 +2050,7 @@
      * };
      *
      * _.forInRight(new Shape, function(value, key) {
-     *   console.log(key);
+     *   (key);
      * });
      * // => logs 'move', 'y', and 'x' assuming `_.forIn ` logs 'x', 'y', and 'move'
      */
@@ -2088,7 +2088,7 @@
      * @example
      *
      * _.forOwn({ '0': 'zero', '1': 'one', 'length': 2 }, function(num, key) {
-     *   console.log(key);
+     *   (key);
      * });
      * // => logs '0', '1', and 'length' (property order is not guaranteed across environments)
      */
@@ -2122,7 +2122,7 @@
      * @example
      *
      * _.forOwnRight({ '0': 'zero', '1': 'one', 'length': 2 }, function(num, key) {
-     *   console.log(key);
+     *   (key);
      * });
      * // => logs 'length', '1', and '0' assuming `_.forOwn` logs '0', '1', and 'length'
      */
@@ -3282,10 +3282,10 @@
      * @returns {Array|Object|string} Returns `collection`.
      * @example
      *
-     * _([1, 2, 3]).forEach(function(num) { console.log(num); }).join(',');
+     * _([1, 2, 3]).forEach(function(num) { (num); }).join(',');
      * // => logs each number and returns '1,2,3'
      *
-     * _.forEach({ 'one': 1, 'two': 2, 'three': 3 }, function(num) { console.log(num); });
+     * _.forEach({ 'one': 1, 'two': 2, 'three': 3 }, function(num) { (num); });
      * // => logs each number and returns the object (property order is not guaranteed across environments)
      */
     function forEach(collection, callback, thisArg) {
@@ -3319,7 +3319,7 @@
      * @returns {Array|Object|string} Returns `collection`.
      * @example
      *
-     * _([1, 2, 3]).forEachRight(function(num) { console.log(num); }).join(',');
+     * _([1, 2, 3]).forEachRight(function(num) { (num); }).join(',');
      * // => logs each number from right to left and returns '3,2,1'
      */
     function forEachRight(collection, callback, thisArg) {
@@ -4661,7 +4661,7 @@
      *
      * var array = [1, 2, 3, 1, 2, 3];
      * _.pull(array, 2, 3);
-     * console.log(array);
+     * (array);
      * // => [1, 1]
      */
     function pull(array) {
@@ -4762,10 +4762,10 @@
      * var array = [1, 2, 3, 4, 5, 6];
      * var evens = _.remove(array, function(num) { return num % 2 == 0; });
      *
-     * console.log(array);
+     * (array);
      * // => [1, 3, 5]
      *
-     * console.log(evens);
+     * (evens);
      * // => [2, 4, 6]
      */
     function remove(array, callback, thisArg) {
@@ -5127,7 +5127,7 @@
      * var saves = ['profile', 'settings'];
      *
      * var done = _.after(saves.length, function() {
-     *   console.log('Done saving!');
+     *   ('Done saving!');
      * });
      *
      * _.forEach(saves, function(type) {
@@ -5191,7 +5191,7 @@
      *
      * var view = {
      *   'label': 'docs',
-     *   'onClick': function() { console.log('clicked ' + this.label); }
+     *   'onClick': function() { ('clicked ' + this.label); }
      * };
      *
      * _.bindAll(view);
@@ -5316,7 +5316,7 @@
      * @example
      *
      * var curried = _.curry(function(a, b, c) {
-     *   console.log(a + b + c);
+     *   (a + b + c);
      * });
      *
      * curried(1)(2)(3);
@@ -5485,7 +5485,7 @@
      * @returns {number} Returns the timer id.
      * @example
      *
-     * _.defer(function(text) { console.log(text); }, 'deferred');
+     * _.defer(function(text) { (text); }, 'deferred');
      * // logs 'deferred' after one or more milliseconds
      */
     function defer(func) {
@@ -5509,7 +5509,7 @@
      * @returns {number} Returns the timer id.
      * @example
      *
-     * _.delay(function(text) { console.log(text); }, 1000, 'later');
+     * _.delay(function(text) { (text); }, 1000, 'later');
      * // => logs 'later' after one second
      */
     function delay(func, wait) {
@@ -5979,7 +5979,7 @@
      * @example
      *
      * var stamp = _.now();
-     * _.defer(function() { console.log(_.now() - stamp); });
+     * _.defer(function() { (_.now() - stamp); });
      * // => logs the number of milliseconds it took for the deferred function to be called
      */
     var now = isNative(now = Date.now) && now || function() {

@@ -23,7 +23,7 @@ angular.module('smartWebApp')
             }
             
               $scope.getUserPlan = function(){
-            	console.log(""+customAlgorithmSvc.encodingFun());
+            	(""+customAlgorithmSvc.encodingFun());
             	
             	$http.get(apiUserPlanUrl+"/"+"getUserPlan",{params:$scope.params }).then(function(res){
                 	$scope.userPlans = res.data.content;	
@@ -60,7 +60,7 @@ angular.module('smartWebApp')
 
                                    }
                       		  }, function errorCallback(response) {
-                      			  console.log("Inside Error Page");
+                      			  ("Inside Error Page");
                           		  toaster.pop({type: 'error', title: 'Error', body: 'Unable To Crew Type. Please Try Again!!!'});
                           		 
                       		  });

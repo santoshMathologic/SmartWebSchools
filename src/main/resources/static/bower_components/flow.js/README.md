@@ -47,13 +47,13 @@ flow.assignDrop(document.getElementById('dropTarget'));
 After this, interaction with Flow.js is done by listening to events:
 ```javascript
 flow.on('fileAdded', function(file, event){
-    console.log(file, event);
+    (file, event);
 });
 flow.on('fileSuccess', function(file,message){
-    console.log(file,message);
+    (file,message);
 });
 flow.on('fileError', function(file, message){
-    console.log(file, message);
+    (file, message);
 });
 ```
 ## How do I set it up with my server?

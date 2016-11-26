@@ -17547,14 +17547,14 @@ function $TemplateCacheProvider() {
  * ```js
  * function linkingFn(scope, elm, attrs, ctrl) {
  *   // get the attribute value
- *   console.log(attrs.ngModel);
+ *   (attrs.ngModel);
  *
  *   // change the attribute
  *   attrs.$set('ngModel', 'new value');
  *
  *   // observe changes to interpolated attribute
  *   attrs.$observe('ngModel', function(value) {
- *     console.log('ngModel has changed value to ' + value);
+ *     ('ngModel has changed value to ' + value);
  *   });
  * }
  * ```
@@ -23975,11 +23975,11 @@ function $LogProvider() {
 
     function consoleLog(type) {
       var console = $window.console || {},
-          logFn = console[type] || console.log || noop,
+          logFn = console[type] ||  || noop,
           hasApply = false;
 
       // Note: reading logFn.apply throws an error in IE11 in IE8 document mode.
-      // The reason behind this is that console.log has type "object" in IE8...
+      // The reason behind this is that  has type "object" in IE8...
       try {
         hasApply = !!logFn.apply;
       } catch (e) {}
@@ -23995,7 +23995,7 @@ function $LogProvider() {
       }
 
       // we are IE which either doesn't have window.console => this is noop and we do nothing,
-      // or we are IE where console.log doesn't have apply so we log at least first 2 args
+      // or we are IE where  doesn't have apply so we log at least first 2 args
       return function(arg1, arg2) {
         logFn(arg1, arg2 == null ? '' : arg2);
       };
@@ -35832,7 +35832,7 @@ var ngControllerDirective = [function() {
             getAndClearSevereErrors().then(function(filteredLog) {
               expect(filteredLog.length).toEqual(0);
               if (filteredLog.length) {
-                console.log('browser console errors: ' + util.inspect(filteredLog));
+                ('browser console errors: ' + util.inspect(filteredLog));
               }
             });
           }
@@ -41678,7 +41678,7 @@ var minlengthDirective = function() {
 if (window.angular.bootstrap) {
   //AngularJS is already loaded, so we can return here...
   if (window.console) {
-    console.log('WARNING: Tried to load angular more than once.');
+    ('WARNING: Tried to load angular more than once.');
   }
   return;
 }
@@ -41970,7 +41970,7 @@ angular.scenario.setUpAndRun = function(config) {
 
   $runner.on('RunnerError', function(error) {
     if (window.console) {
-      console.log(formatException(error));
+      (formatException(error));
     } else {
       // Do something for IE
       alert(error);

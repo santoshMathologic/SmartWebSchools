@@ -20,7 +20,7 @@ angular.module("smartWebApp").controller("loginCtrl",function($scope,$http,$stat
     	   var hashedPassword = md5(password);
            
            if(searchModel.item==="CrewLink"){
-           	console.log("DSADSA");
+           
            }
         
         $scope.isLoggedIn = AuthFactory.isLoggedIn();

@@ -418,7 +418,7 @@ describe('toasterContainer controller', function () {
 			var scope = container.scope();
 			
 			spyOn(scope, 'removeToast').and.callThrough();
-			console.log = jasmine.createSpy("log");
+			 = jasmine.createSpy("log");
 			
 			toaster.pop({ type: 'info', clickHandler: 'clickHandler' });
 			rootScope.$digest();
@@ -428,7 +428,7 @@ describe('toasterContainer controller', function () {
 			expect(scope.toasters.length).toBe(0);
 			expect(scope.removeToast).toHaveBeenCalled();
 			
-    		expect(console.log).toHaveBeenCalledWith("TOAST-NOTE: Your click handler is not inside a parent scope of toaster-container.");
+    		expect().toHaveBeenCalledWith("TOAST-NOTE: Your click handler is not inside a parent scope of toaster-container.");
 		});
 	});
 });

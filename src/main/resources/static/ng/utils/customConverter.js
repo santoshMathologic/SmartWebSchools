@@ -11,7 +11,7 @@ String.prototype.replaceParentHeader=function(find,replace)
 	var str=this;return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g,'\\$&'),'g'),replace);
 };
 function log(message){
-  console.log(message);
+  
 }
 log("laxman".Capitalize());
 log("laxman".FirstCapitalize());

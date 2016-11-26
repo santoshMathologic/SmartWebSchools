@@ -1,10 +1,10 @@
 /*jshint sub:true*/
 ' use strict';
 angular.module("smartWebApp").controller("trainCtrl", function($scope,$state,$http) {
-	console.log("Inside train Controller");
+	("Inside train Controller");
 	
 
-	console.log("DASDAS");
+	("DASDAS");
 	$scope.trainsLists = [];
 	$scope.trainsList =[]
 	$scope.crewLinksListCSVRecords = [];

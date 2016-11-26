@@ -45,5 +45,28 @@ var sortTrainStationbyStopNumber= function(trainstationsList){
         }
     }
     return trainstationsList;
+};
+
+var TrainStationRemoveDuplicate = function(trainstationList){
+	
+	// Remove Train Station for Duplicate Entries
+	var temp;
+	if(trainstationList.isArray && trainstationList.length > 1){
+		
+		for(var i = 0;i < trainstationList.length;i++){
+			 if(!trainstationList.indexOf(trainstationList[i].stopNumber)){
+				
+			 }
+		}
+		
+		
+	}
+	
+	
+	
+	
+	 return trainstationList;
+	 
+	
 }
 

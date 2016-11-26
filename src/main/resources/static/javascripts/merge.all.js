@@ -2,7 +2,7 @@
 	(function(){
 	
 	        
-	   console.log("at custom.js");
+	   ("at custom.js");
 	})();
 
 	(function(){
@@ -10,7 +10,7 @@
 	var bodyEL = $('body'),
 	
 	navToggleBtn = bodyEL.find('.nav-toggle-btn');
-	console.log(bodyEL);
+	(bodyEL);
 	navToggleBtn.on('click',function(e){
 	
 	bodyEL.toggleClass('active-nav');

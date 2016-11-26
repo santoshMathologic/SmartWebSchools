@@ -18,7 +18,7 @@ var token = jwt.encode(payload, secret);
 
 // decode
 var decoded = jwt.decode(token, secret);
-console.log(decoded); //=> { foo: 'bar' }
+(decoded); //=> { foo: 'bar' }
 ```
 
 ### Algorithms

@@ -1,7 +1,7 @@
 /*jshint sub:true*/
 ' use strict';
 angular.module("smartWebApp").controller("uploadCtrl", function($scope, $state, $window,$document, Upload, $location, toaster, $timeout, $http) {
-	console.log("Inside upload Controller");
+	("Inside upload Controller");
 	
 	$scope.uploadObject = {};
 	
@@ -27,7 +27,7 @@ angular.module("smartWebApp").controller("uploadCtrl", function($scope, $state, 
            var fileName = file.name;
            var fileExtension = fileName.split('.')[fileName.split('.').length - 1].toLowerCase();
            
-           console.log("train stat"+$scope.uploadObject.traindetails);
+           ("train stat"+$scope.uploadObject.traindetails);
 
            Upload.upload({
              url: apiUploadUrl + "/"+"createUpload",
@@ -51,13 +51,13 @@ angular.module("smartWebApp").controller("uploadCtrl", function($scope, $state, 
                  body: 'Upload '+$scope.uploadObject.chooseItems+' Succcessfully!!!!',
                });
 
-             console.log('upload succesfully...')
+             ('upload succesfully...')
            }).error(function (err) {
-             console.log(err.stack);
+             (err.stack);
            })
 
 
-        //   console.log(file);
+        //   (file);
          };
 
          $scope.saveUpload = function () {

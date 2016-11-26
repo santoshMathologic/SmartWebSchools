@@ -1,10 +1,10 @@
 /*jshint sub:true*/
 ' use strict';
 angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$http,$stateParams,$state) {
-	console.log("Inside train station Controller");
+	("Inside train station Controller");
 	
 	
-	console.log("DASDAS");
+	("DASDAS");
 	$scope.trainStationsList = [];
 	$scope.trainStationsLists = [];
 	
@@ -17,7 +17,7 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	//$scope.Days = Days;
 	
 	$scope.query = {
-			 limit:50,
+			 limit:500,
 	         perPage:1,
 	         orderBy:"stopNumber",
 	         trainNumber: $scope.trainNo,
@@ -27,9 +27,9 @@ angular.module("smartWebApp").controller("trainstationCtrl", function($scope,$ht
 	 $scope.getTrainStationList  = function(){
 		 $scope.isLoading = true;
 		  $http.get(trainstationUrl,{params:$scope.query}).then(function(successResponse){
-			  $scope.trainStationsLists  = successResponse.data.content;
+			  $scope.trainStationsList  = successResponse.data;
 			  
-			  $scope.trainStationsList = sortTrainStationbyStopNumber($scope.trainStationsLists);
+			 $scope.trainStationsList = TrainStationRemoveDuplicate($scope.trainStationsList);
 			  $scope.isLoading = false;
 	          		  
 		  },function(errorResponse){

@@ -7,18 +7,17 @@
 var isDebug = false;
 var DEBUG = function (val) {
     if (isDebug) {
-        console.log("SpringDataRestApi : LOG : ");
-        console.log(val);
+        
+      
     }
 };
 var ERROR = function (val) {
-    console.log("SpringDataRestApi : ERROR : ");
-    console.log(val);
+   
 };
 
 var LOG = function (val) {
-    console.log("SpringDataRestApi : LOG : ");
-    console.log(val);
+  
+   
 };
 
 
@@ -34,7 +33,7 @@ var ServerTableFetch = function (url, http, callBackBefore,
 
     this.process = function (tableState) {
 
-        console.log(tableState);
+        (tableState);
         this.callBackBefore("CALL BACK BEFORE");
 
 

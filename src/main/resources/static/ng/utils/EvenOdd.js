@@ -13,7 +13,7 @@
                     }; 
 
 var log =function (message){
-  console.log(message);
+  
   var s = "fffff";
 };
 sumEven(20);

@@ -14,7 +14,7 @@ define([
         $scope.actions = [];
 
         $scope.addAction = function (type, msg) {
-            console.log(type + ': ' + msg);
+            (type + ': ' + msg);
             $scope.actions.push({
                 msg: type + ': ' + msg
             });

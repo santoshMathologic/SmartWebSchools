@@ -62,10 +62,10 @@ function replaceRecursively(directory, excludedDirectories, allowedExtensions, o
     }
   } : function (filepath) {
     if (allowedExtensions.has(path.parse(filepath).ext)) {
-      console.log('FILE: ' + filepath);
+      ('FILE: ' + filepath);
     }
     else {
-      console.log('EXCLUDED:' + filepath);
+      ('EXCLUDED:' + filepath);
     }
   };
   walkAsync(directory, excludedDirectories, updateFile, function (err) {

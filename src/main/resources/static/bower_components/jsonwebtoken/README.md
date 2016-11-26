@@ -60,7 +60,7 @@ var token = jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256'});
 
 // sign asynchronously
 jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
-  console.log(token);
+  (token);
 });
 ```
 
@@ -89,11 +89,11 @@ encoded public key for RSA and ECDSA.
 ```js
 // verify a token symmetric - synchronous
 var decoded = jwt.verify(token, 'shhhhh');
-console.log(decoded.foo) // bar
+(decoded.foo) // bar
 
 // verify a token symmetric
 jwt.verify(token, 'shhhhh', function(err, decoded) {
-  console.log(decoded.foo) // bar
+  (decoded.foo) // bar
 });
 
 // invalid token - synchronous
@@ -112,7 +112,7 @@ jwt.verify(token, 'wrong-secret', function(err, decoded) {
 // verify a token asymmetric
 var cert = fs.readFileSync('public.pem');  // get public key
 jwt.verify(token, cert, function(err, decoded) {
-  console.log(decoded.foo) // bar
+  (decoded.foo) // bar
 });
 
 // verify audience
@@ -168,8 +168,8 @@ var decoded = jwt.decode(token);
 
 // get the decoded payload and header
 var decoded = jwt.decode(token, {complete: true});
-console.log(decoded.header);
-console.log(decoded.payload)
+(decoded.header);
+(decoded.payload)
 ```
 
 ## Errors & Codes
